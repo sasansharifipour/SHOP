@@ -1,0 +1,87 @@
+<div class="VazirMedium polaroid col-xl-4 offset-xl-4 col-lg-5 offset-lg-4 col-md-7 offset-md-3 col-sm-10 offset-sm-1" dir="rtl">
+  <div class="container">
+    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">لطفاً اطلاعات خود را وارد نمائید</h5>      
+    </div>
+
+    <div class="row text-right">
+      <div class="col-12">
+        <form #f="ngForm" novalidate (ngSubmit)="registerUser(f)">
+          <div class="form-group" [class.has-error]="name.invalid && name.touched"
+               [class.has-success]="name.valid">
+            <label class="control-label" for="name">نام</label>
+            <input type="text" class="form-control" id="name" placeholder="نام"
+                   name="name" required autoFocus ngModel #name="ngModel">
+
+            <p class="text-danger" *ngIf="name.invalid && name.touched">
+              وارد کردن نام الزامی است
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="family">نام خانوادگی</label>
+            <input type="text" class="form-control" id="family" placeholder="نام خانوادگی"
+                   required name="family" ngModel #family="ngModel">
+
+            <p class="text-danger" *ngIf="family.invalid && family.touched">
+              وارد کردن نام خانوادگی الزامی است
+            </p>
+          </div>
+          <div class="form-group" dir="ltr">
+            <label for="eMail">پست الکترونیک</label>
+            <input id="eMail" type="text" name="eMail" required email class="form-control" placeholder="E-Mail" ngModel #eMail="ngModel">
+            <p class="text-danger" *ngIf="eMail.errors?.email && eMail.touched">
+              لطفاً پست الکترونیک معتبر وارد نمائید
+            </p>
+            <p class="text-danger" *ngIf="eMail.errors?.required && eMail.touched">
+              وارد کردن پست الکترونیکی الزامی است
+            </p>
+            
+          </div>
+          <div class="form-group">
+            <label for="password">کلمه عبور</label>
+            <show-hide-password size="md" btnStyle="secondary" [btnOutline]="false" dir="ltr">
+              <input type="password" dir="ltr" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{5,}$" #password="ngModel" class="form-control" id="password" name="password" placeholder="کلمه عبور" ngModel>
+            </show-hide-password>
+            
+            <p class="text-danger" *ngIf="password.errors?.required && password.touched">
+              وارد کردن کلمه عبور الزامی است
+            </p>
+            <p class="text-danger" *ngIf="password.errors?.pattern && password.touched">
+              کلمه عبور حداقل بایستی 5 کارکتر و شامل حروف بزرگ، کوچک و عدد باشد.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label for="mobile">شماره همراه</label>
+            <input dir="ltr" type="text" class="form-control" required id="mobile" placeholder="شماره همراه"
+                   name="mobile" ngModel #mobile="ngModel">
+
+            <p class="text-danger" *ngIf="mobile.errors?.required && mobile.touched">
+              وارد کردن شماره همراه الزامی است
+            </p>
+          </div>
+
+          <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">ثبت نام</button>
+            <ngx-spinner bdOpacity=1
+                         bdColor="#333"
+                         size="large"
+                         color="#fff"
+                         type="ball-atom"
+                         fullScreen="true">
+              <p style="color: white"> Loading... </p>
+            </ngx-spinner>
+
+          </div>
+
+          <div *ngIf="errors" class="alert alert-danger" role="alert">
+            <strong>Oops!</strong> {{errors}}
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+

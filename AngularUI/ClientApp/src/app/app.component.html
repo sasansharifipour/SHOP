@@ -1,0 +1,23 @@
+<body style=" height: 100%;" dir="ltr">
+
+<div class="col-12 MenuColored" style="padding: 0px;">
+  <div class="col-1 text-center" style="display: inline-block; padding: 0px;"  *ngIf="status">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  </div>
+  <div class="col-11" style="display: inline-block;  padding: 0px;">
+    <app-nav-menu></app-nav-menu>
+  </div>
+</div>
+<div class="col-12" style="padding: 0px; height: 100%;">
+  <mat-drawer-container style=" height: 100%;">
+    <mat-drawer #snav mode="side" style="width: 15%;">
+      <ejs-treeview [fields]="treeFields" *ngIf="status"></ejs-treeview>
+    </mat-drawer>
+    <mat-drawer-content style=" height: 100%; background-color: white;">
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
+</body>
+
+

@@ -1,0 +1,53 @@
+<div class="col-12 MenuColored" style="padding: 0px; height: 100%;">
+  <div style="padding-top: 200px;" class=" col-xl-4 offset-xl-4 col-lg-5 offset-lg-4 col-md-7 offset-md-3 col-sm-10 offset-sm-1" dir="ltr">
+    <div class="container">
+      <!--<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">لطفاً اطلاعات خود را وارد نمائید</h5>
+      </div>-->
+
+      <div class="row ">
+        <div class="col-12">
+          <br />
+          <form #f="ngForm" novalidate (ngSubmit)="login(f)"  autocomplete="off">
+            
+            <div class="form-group">
+              <!--<label for="username">نام کاربری</label>-->
+              <owl-form-field class="example-full-width">
+                <input owlInput id="username" type="text" name="username" autoFocus  autocomplete="off"
+                       ngModel required #username="ngModel" placeholder="Username">
+              </owl-form-field>
+            </div>
+
+            <div class="form-group">
+              <!--<label for="password">کلمه عبور</label>-->
+              <owl-form-field>
+                  <input owlInput type="password" #password="ngModel" id="password"  autocomplete="off"
+                         name="password" placeholder="Password" required ngModel>
+              </owl-form-field>
+            </div>
+
+            <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+              <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting" style="z-index:5;">Login</button>
+              <ngx-spinner bdOpacity=1
+                           bdColor="#333"
+                           size="large"
+                           color="#fff"
+                           type="ball-atom"
+                           fullScreen="true">
+                <p style="color: white"> Loading... </p>
+              </ngx-spinner>
+
+            </div>
+
+            <div *ngIf="errors" class="alert alert-danger" role="alert">
+              <strong>خطا : </strong> {{errors}}
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

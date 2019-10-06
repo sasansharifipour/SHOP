@@ -1,0 +1,13 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import "~owl-ng/assets/style/theme.min.css";
+
+@import 'app/shared/styles/FontStyles.css';
+@import 'app/shared/styles/ElementStyles.css';
+

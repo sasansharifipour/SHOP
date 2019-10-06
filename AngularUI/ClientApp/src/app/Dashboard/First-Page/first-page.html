@@ -1,0 +1,442 @@
+<owl-accordion>
+  <owl-expansion-panel>
+    <owl-expansion-panel-header>
+      <owl-expansion-panel-title>
+        Filters
+      </owl-expansion-panel-title>
+    </owl-expansion-panel-header>
+
+    <div class="col-3" style="display: inline-block;">
+
+      <mat-card>
+        <mat-card-content>
+          <p><b>Select Operator :</b></p>
+          <div class="" *ngFor="let item of checklist_Operators" style="display: inline; padding: 10px;">
+            <mat-checkbox color='primary' class="example-margin" [(ngModel)]="item.isSelected" (change)="filterChnage()">{{item.value}}</mat-checkbox>
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+    <div class="col-3" style="display: inline-block;">
+
+      <mat-card>
+        <mat-card-content>
+          <p><b>Select Technology :</b></p>
+          <div class="" *ngFor="let item of checklist_Technology" style="display: inline; padding: 10px;">
+            <mat-checkbox color='primary' class="example-margin" [(ngModel)]="item.isSelected" (change)="filterChnage()">{{item.value}}</mat-checkbox>
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+    <div class="col-6" style="display: inline-block;">
+
+
+      <mat-card>
+        <mat-card-content>
+          <p><b>Select Time :</b></p>
+
+          <div class="col-6" style="display: inline-block;">
+            <owl-form-field>
+              <input owlInput [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12"
+                     [(ngModel)]="selectedMoments"
+                     [selectMode]="'rangeFrom'"
+                     (ngModelChange)="filterChnage()"
+                     placeholder="Start Date Time">
+            </owl-form-field>
+            <owl-date-time #dt12></owl-date-time>
+          </div>
+          <div class="col-6" style="display: inline-block;">
+            <owl-form-field>
+              <input owlInput [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13"
+                     [(ngModel)]="selectedMoments"
+                     [selectMode]="'rangeTo'"
+                     (ngModelChange)="filterChnage()"
+                     placeholder="End Date Time">
+            </owl-form-field>
+            <owl-date-time #dt13></owl-date-time>
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+    </div>
+
+  </owl-expansion-panel>
+</owl-accordion>
+  
+<div class="col-12" style="font-family: Open Sans; font-weight: lighter!important; padding: 2px;">
+<div class="col-3 " style="display: inline-block; padding: 2px; ">
+  <div class="col-12 " style="margin: 0px;padding: 2px; ">
+    <div class="col-12" style="padding: 5px;">
+      <mat-tab-group mat-align-tabs="center" #firsttabGroup  (selectedTabChange)="firstGaugeChart_Tab_Change($event)">
+
+        <mat-tab label="CSSR">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div class="text-center" style="padding-bottom: 10px; padding-top: 10px;">
+
+              <radial-gauge
+
+                [value] = "CSSR_Gauge_needle_value"
+
+                width="300"
+                height="200"
+                title="CSSR"
+                units="%"
+
+                min-value="0"
+                start-angle="90"
+                ticks-angle="180"
+                value-box="false"
+                max-value="100"
+                major-ticks="0,20,40,60,80,100"
+                minor-ticks="2"
+                stroke-ticks="true"
+                highlights='[
+    {"from": 0, "to": 70, "color": "red"},
+    {"from": 70, "to": 90, "color": "yellow"},
+    {"from": 90, "to": 100, "color": "green"}
+]'
+                color-plate="#fff"
+                border-shadow-width="0"
+                borders="false"
+                needle-type="arrow"
+                needle-width="2"
+                needle-circle-size="7"
+                needle-circle-outer="true"
+                needle-circle-inner="false"
+                animation-duration="1500"
+                animation-rule="linear"
+
+                value-box="true"
+
+              ></radial-gauge>
+
+
+            </div>
+
+          </div>
+        </mat-tab>
+
+        <mat-tab label="SDCCH Drop Rate">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div class="text-center" style="padding-bottom: 10px; padding-top: 10px;">
+
+              <radial-gauge
+
+                [value] = "SDCCH_DR_Gauge_needle_value"
+
+                width="300"
+                height="200"
+                title="SDCCH Drop Rate"
+                units="%"
+
+                min-value="0"
+                start-angle="90"
+                ticks-angle="180"
+                value-box="false"
+                max-value="100"
+                major-ticks="0,20,40,60,80,100"
+                minor-ticks="2"
+                stroke-ticks="true"
+                highlights='[
+    {"from": 0, "to": 70, "color": "red"},
+    {"from": 70, "to": 90, "color": "yellow"},
+    {"from": 90, "to": 100, "color": "green"}
+]'
+                color-plate="#fff"
+                border-shadow-width="0"
+                borders="false"
+                needle-type="arrow"
+                needle-width="2"
+                needle-circle-size="7"
+                needle-circle-outer="true"
+                needle-circle-inner="false"
+                animation-duration="1500"
+                animation-rule="linear"
+
+                value-box="true"
+
+              ></radial-gauge>
+
+
+            </div>
+
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+
+</div>
+<div class="col-3" style="display: inline-block; padding: 2px; ">
+  <div class="col-12 " style="margin: 0px;padding: 2px; ">
+    <div class="col-12 " style="padding: 5px;">
+      <mat-tab-group mat-align-tabs="center" #firstTabBarGroup>
+
+        <mat-tab label="Current Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style="padding-bottom: 10px;  margin: 5px;">
+
+              <canvas id="FirstTabBarChart_Current_Month"></canvas>
+
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Last Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style="padding-bottom: 10px;  margin: 5px;">
+
+
+            </div>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+<div class="col-3 " style="display: inline-block; padding: 2px; ">
+  <div class="col-12 " style="margin: 0px;padding: 2px; ">
+    <div class="col-12" style="padding: 5px;">
+      <mat-tab-group mat-align-tabs="center"  #secondtabGroup (selectedTabChange)="secondGaugeChart_Tab_Change($event)">
+
+        <mat-tab label="TCH ASR">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div class="text-center" style="padding-bottom: 10px; padding-top: 10px;">
+
+              <radial-gauge
+
+                [value] = "TCH_ASR_Gauge_needle_value"
+
+                width="300"
+                height="200"
+                title="TCH ASR"
+                units="%"
+
+                min-value="0"
+                start-angle="90"
+                ticks-angle="180"
+                value-box="false"
+                max-value="100"
+                major-ticks="0,20,40,60,80,100"
+                minor-ticks="2"
+                stroke-ticks="true"
+                highlights='[
+    {"from": 0, "to": 70, "color": "red"},
+    {"from": 70, "to": 90, "color": "yellow"},
+    {"from": 90, "to": 100, "color": "green"}
+]'
+                color-plate="#fff"
+                border-shadow-width="0"
+                borders="false"
+                needle-type="arrow"
+                needle-width="2"
+                needle-circle-size="7"
+                needle-circle-outer="true"
+                needle-circle-inner="false"
+                animation-duration="1500"
+                animation-rule="linear"
+
+                value-box="true"
+
+              ></radial-gauge>
+
+
+            </div>
+
+          </div>
+        </mat-tab>
+
+        <mat-tab label="CS IRAT HOSR">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div class="text-center" style="padding-bottom: 10px; padding-top: 10px;">
+
+              <radial-gauge
+
+                [value] = "CS_IRAT_HOSR_Gauge_needle_value"
+
+                width="300"
+                height="200"
+                title="CS IRAT HOSR"
+                units="%"
+
+                min-value="0"
+                start-angle="90"
+                ticks-angle="180"
+                value-box="false"
+                max-value="100"
+                major-ticks="0,20,40,60,80,100"
+                minor-ticks="2"
+                stroke-ticks="true"
+                highlights='[
+    {"from": 0, "to": 70, "color": "red"},
+    {"from": 70, "to": 90, "color": "yellow"},
+    {"from": 90, "to": 100, "color": "green"}
+]'
+                color-plate="#fff"
+                border-shadow-width="0"
+                borders="false"
+                needle-type="arrow"
+                needle-width="2"
+                needle-circle-size="7"
+                needle-circle-outer="true"
+                needle-circle-inner="false"
+                animation-duration="1500"
+                animation-rule="linear"
+
+                value-box="true"
+
+              ></radial-gauge>
+
+
+            </div>
+
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+
+</div>
+<div class="col-3" style="display: inline-block; padding: 2px; ">
+  <div class="col-12 " style="margin: 0px;padding: 2px; ">
+    <div class="col-12 " style="padding: 5px;">
+      <mat-tab-group mat-align-tabs="center" #secondTabBarGroup>
+
+        <mat-tab label="Current Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style="padding-bottom: 10px;  margin: 5px;">
+
+              <canvas id="SecondTabBarChart_Current_Month"></canvas>
+
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Last Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style="padding-bottom: 10px;  margin: 5px;">
+
+
+            </div>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-12" style="padding: 2px;">
+
+<div class="col-4 text-center" style="display: inline-block; padding: 2px; ">
+  <div class="col-12 " style="margin: 0px;padding: 2px; ">
+    <div class="col-12 container" style="padding: 0px;">
+      <mat-tab-group mat-align-tabs="center" #firstTabLineGroup (selectedTabChange)="firstLineChart_Tab_Change($event)">
+
+        <mat-tab label="Current Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style=" margin: 5px;">
+
+              <canvas id="FirstLineChart_Current_Month"></canvas>
+
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Last Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style=" margin: 5px;">
+
+              <canvas id="FirstLineChart_Last_Month"></canvas>
+
+            </div>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+
+</div>
+
+<div class="col-4" style="display: inline-block; padding: 2px; ">
+  <div class="col-12 " style="margin: 0px;padding: 2px; ">
+    <div class="col-12 container" style="padding: 0px;">
+      <mat-tab-group mat-align-tabs="center" #compareTabLineGroup (selectedTabChange)="compareLineChart_Tab_Change($event)">
+
+        <mat-tab label="Current Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style=" margin: 5px;">
+
+              <canvas id="CompareLineChart_Current_Month"></canvas>
+
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Last Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style=" margin: 5px;">
+
+              <canvas id="CompareLineChart_Last_Month"></canvas>
+
+            </div>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+
+<div class="col-4" style="display: inline-block; padding: 2px; ">
+  <div class="col-12" style="margin: 0px;padding: 2px; ">
+    <div class="col-12 container" style="padding: 0px;">
+      <mat-tab-group mat-align-tabs="center" #secondTabLineGroup  (selectedTabChange)="secondLineChart_Tab_Change($event)">
+
+        <mat-tab label="Current Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style=" margin: 5px;">
+
+              <canvas id="SecondLineChart_Current_Month"></canvas>
+
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Last Month">
+          <div style="border-color: gray; border-width: 1px; border-style: solid; margin-top: 5px;">
+            <div style=" margin: 5px;">
+
+              <canvas id="SecondLineChart_Last_Month"></canvas>
+
+            </div>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+
+</div>
+
