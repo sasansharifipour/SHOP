@@ -16,6 +16,12 @@ export class RegistrationFormComponent implements OnInit {
   isRequesting: boolean;
   submitted: boolean = false;
 
+  public showPassword: boolean = false;
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+
   constructor(private router: Router, private spinner: NgxSpinnerService,
     private userService: UserService) { }
 

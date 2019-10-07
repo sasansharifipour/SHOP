@@ -21,7 +21,7 @@ import { HttpModule } from '@angular/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule  } from 'owl-ng';
+import { OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlInputMaskModule  } from 'owl-ng';
 import { GaugeChartModule } from 'angular-gauge-chart';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from './material-module';
@@ -61,7 +61,7 @@ import { GaugesModule } from 'ng-canvas-gauges';
     BrowserAnimationsModule,
     MatButtonModule, MatNativeDateModule, MatIconModule,
     MatSidenavModule, MatListModule, MatToolbarModule,
-    OwlDateTimeModule, OwlNativeDateTimeModule,
+    OwlDateTimeModule, OwlNativeDateTimeModule, OwlInputMaskModule ,
     GaugeChartModule,
     OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule ,
     ReactiveFormsModule,

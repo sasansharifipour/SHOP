@@ -11,17 +11,19 @@
           <form #f="ngForm" novalidate (ngSubmit)="login(f)"  autocomplete="off">
             
             <div class="form-group">
-              <!--<label for="username">نام کاربری</label>-->
               <owl-form-field class="owlng-input-customised">
                 <input owlInput id="username" type="text" name="username" autoFocus
                        autocomplete="off" ngModel required #username="ngModel"
                        placeholder="Username" class="input-color-customised">
+
+                <owl-error *ngIf="username.errors?.required && username.touched" style="font-size: larger;">
+                  Username is <strong>required</strong>
+                </owl-error>
               </owl-form-field>
             </div>
 
             <div class="form-group">
-              <!--<label for="password">کلمه عبور</label>-->
-              <owl-form-field  class="owlng-input-customised">
+              <owl-form-field class="owlng-input-customised">
                 <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
                        id="password" autocomplete="off" name="password" placeholder="Password"
                        required ngModel class="input-color-customised">
@@ -30,6 +32,11 @@
                   <mat-icon *ngIf="showPassword">visibility_off</mat-icon>
                   <mat-icon *ngIf="!showPassword">visibility</mat-icon>
                 </span>
+
+                <owl-error *ngIf="password.errors?.required && password.touched" style="font-size: larger;">
+                  Password is <strong>required</strong>
+                </owl-error>
+
               </owl-form-field>
             </div>
             
