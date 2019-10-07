@@ -19,12 +19,17 @@ export class LoginFormComponent implements OnInit {
   isRequesting: boolean;
   submitted: boolean = false;
 
+  public showPassword: boolean = false;
+
   constructor(private userService: UserService, private router: Router,
     private spinner: NgxSpinnerService,
     private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {  }
 
+  togglePassword() {
+    this.showPassword = ! this.showPassword;
+  }
 
     login({ value, valid }: { value: LoginModel, valid: boolean }) {
       this.submitted = true;

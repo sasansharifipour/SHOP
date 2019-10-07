@@ -173,3 +173,17 @@ ul.kas-icon-aero li a:before {
   margin-left: 30px;
 }
 
+.owlng-input-customised.owl-form-field-focused .owl-form-field-placeholder {
+  color: white;
+  font-size: larger;
+}
+
+.owlng-input-customised.owl-form-field-focused .owl-form-field-underline-graphic {
+  stroke: white;
+}
+
+.input-color-customised{
+  color: white;
+  font-size: large;
+}
+

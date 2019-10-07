@@ -12,20 +12,27 @@
             
             <div class="form-group">
               <!--<label for="username">نام کاربری</label>-->
-              <owl-form-field class="example-full-width">
-                <input owlInput id="username" type="text" name="username" autoFocus  autocomplete="off"
-                       ngModel required #username="ngModel" placeholder="Username">
+              <owl-form-field class="owlng-input-customised">
+                <input owlInput id="username" type="text" name="username" autoFocus
+                       autocomplete="off" ngModel required #username="ngModel"
+                       placeholder="Username" class="input-color-customised">
               </owl-form-field>
             </div>
 
             <div class="form-group">
               <!--<label for="password">کلمه عبور</label>-->
-              <owl-form-field>
-                  <input owlInput type="password" #password="ngModel" id="password"  autocomplete="off"
-                         name="password" placeholder="Password" required ngModel>
+              <owl-form-field  class="owlng-input-customised">
+                <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
+                       id="password" autocomplete="off" name="password" placeholder="Password"
+                       required ngModel class="input-color-customised">
+
+                <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
+                  <mat-icon *ngIf="showPassword">visibility_off</mat-icon>
+                  <mat-icon *ngIf="!showPassword">visibility</mat-icon>
+                </span>
               </owl-form-field>
             </div>
-
+            
             <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
               <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting" style="z-index:5;">Login</button>
               <ngx-spinner bdOpacity=1
