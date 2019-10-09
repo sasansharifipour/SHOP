@@ -22,7 +22,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   OwlRadioModule, OwlDialogModule, OwlFormFieldModule, OwlInputModule,
-  OwlAccordionModule, OwlInputMaskModule, OwlNotifierModule
+  OwlAccordionModule, OwlInputMaskModule, OwlNotifierModule, OwlRippleModule, OwlFormFieldModule 
 } from 'owl-ng';
 import { GaugeChartModule } from 'angular-gauge-chart';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -55,9 +55,9 @@ import { GaugesModule } from 'ng-canvas-gauges';
     ShowHidePasswordModule,
     NgxChartsModule,
     BrowserAnimationsModule,
-    OwlDateTimeModule, OwlNativeDateTimeModule, OwlInputMaskModule, OwlDialogModule,
+    OwlDateTimeModule, OwlNativeDateTimeModule, OwlInputMaskModule, OwlDialogModule, OwlFormFieldModule ,
     GaugeChartModule,
-    OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlNotifierModule,
+    OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlNotifierModule, OwlRippleModule ,
     ReactiveFormsModule,
     GaugesModule,
     TreeViewModule,

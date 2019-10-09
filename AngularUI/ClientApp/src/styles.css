@@ -11,3 +11,45 @@
 @import 'app/shared/styles/FontStyles.css';
 @import 'app/shared/styles/ElementStyles.css';
 
+.owlng-btn {
+  padding: .5em;
+  width: 100%;
+  max-width: 8em;
+  height: 2.5em;
+  background: #fff;
+  color: #3f51b5;
+  border: 1px solid #3f51b5;
+  margin: .1em;
+  text-decoration: none !important;
+  cursor: pointer;
+  text-align: center;
+  zoom: 1;
+  display: inline-block;
+  outline: 0;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent
+}
+
+.owlng-ripple-iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #fff;
+  color: #3f51b5;
+  border: 1px solid #3f51b5;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent
+}
+
+  .owlng-ripple-iconWrapper i {
+    font-size: 20px
+  }
+
+

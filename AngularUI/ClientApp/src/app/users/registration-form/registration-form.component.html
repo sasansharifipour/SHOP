@@ -81,7 +81,9 @@
           </div>
           
           <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
-            <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Register</button>
+
+            <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
+                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">Register</button>
             <ngx-spinner bdOpacity=1
                          bdColor="#333"
                          size="large"
@@ -93,7 +95,7 @@
 
           </div>
 
-          <div *ngIf="errors" class="alert alert-danger" role="alert">
+          <div *ngIf="errors" class="alert alert-danger text-left" role="alert">
             <strong>ERROR : </strong> {{errors}}
           </div>
 

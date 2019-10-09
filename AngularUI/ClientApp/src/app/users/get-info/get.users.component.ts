@@ -17,8 +17,8 @@ export class GetUsersComponent implements OnInit {
   displayedColumns: string[] = ['name', 'family', 'mobile', 'eMail', 'userName', 'actions'];
   dataSource = new MatTableDataSource<UserViewModel>(this.users);
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private spinner: NgxSpinnerService, private userService: UserService,
     private dialogService: OwlDialogService) { }

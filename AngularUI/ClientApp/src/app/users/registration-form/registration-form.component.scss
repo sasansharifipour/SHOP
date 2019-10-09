@@ -1,1 +1,15 @@
+.owl-ripple {
+  overflow: hidden;
+  user-select: none;
 
+  &.owl-ripple-unbounded {
+    overflow: visible;
+  }
+}
+
+.owl-ripple-element {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, .1);
+}
