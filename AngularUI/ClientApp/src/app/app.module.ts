@@ -20,13 +20,17 @@ import { HttpModule } from '@angular/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlInputMaskModule  } from 'owl-ng';
+import {
+  OwlRadioModule, OwlDialogModule, OwlFormFieldModule, OwlInputModule,
+  OwlAccordionModule, OwlInputMaskModule, OwlNotifierModule
+} from 'owl-ng';
 import { GaugeChartModule } from 'angular-gauge-chart';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from './material-module';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { GaugesModule } from 'ng-canvas-gauges';
+
 
 @NgModule({
   declarations: [
@@ -51,9 +55,9 @@ import { GaugesModule } from 'ng-canvas-gauges';
     ShowHidePasswordModule,
     NgxChartsModule,
     BrowserAnimationsModule,
-    OwlDateTimeModule, OwlNativeDateTimeModule, OwlInputMaskModule ,
+    OwlDateTimeModule, OwlNativeDateTimeModule, OwlInputMaskModule, OwlDialogModule,
     GaugeChartModule,
-    OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule ,
+    OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlNotifierModule,
     ReactiveFormsModule,
     GaugesModule,
     TreeViewModule,

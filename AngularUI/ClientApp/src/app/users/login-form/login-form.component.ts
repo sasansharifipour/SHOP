@@ -39,7 +39,6 @@ export class LoginFormComponent implements OnInit {
       if (valid) {
         this.userService.login(value)
           .subscribe((result: Boolean) => {
-              console.log('test');
               if (result) {
                 this.router.navigate(['/']);
               } else {

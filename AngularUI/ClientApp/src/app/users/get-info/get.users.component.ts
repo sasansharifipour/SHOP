@@ -1,57 +1,72 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserViewModel } from '../../shared/models/user.viewmodel.inteface';
 import { UserService } from '../../shared/services/user.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
+import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { RegistrationFormComponent } from '../registration-form/registration-form.component';
+import { OwlDialogService, OwlDialogRef } from 'owl-ng';
 
 @Component({
   selector: 'app-users-get-component',
+  styleUrls: ['get.users.component.scss'],
   templateUrl: './get.users.component.html'
 })
 
-export class GetUsersComponent {
-  public displayedColumns: string[] = [ 'name'];
-  public dataSource = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  ];
+export class GetUsersComponent implements OnInit {
   public users: UserViewModel[];
+  displayedColumns: string[] = ['name', 'family', 'mobile', 'eMail', 'userName', 'actions'];
+  dataSource = new MatTableDataSource<UserViewModel>(this.users);
 
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor (private spinner: NgxSpinnerService, private userService: UserService){ }
+  constructor(private spinner: NgxSpinnerService, private userService: UserService,
+    private dialogService: OwlDialogService) { }
     
   ngOnInit() {
-    
+    this.loadData();
+  }
+
+  loadData() {
+
     this.spinner.show();
 
     this.userService.loadUsers().subscribe(result => {
-      this.users = result;
-    },
-    error => {
-      console.error(error);
-      this.spinner.hide();
-    },
-    () => {
+        this.users = result;
+
+        this.dataSource = new MatTableDataSource<UserViewModel>(this.users);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error => {
+        console.error(error);
         this.spinner.hide();
-    });
-    
+      },
+      () => {
+        this.spinner.hide();
+      });
+
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public openDialog_addUser(event: any): void {
+    const dialogRef = this.dialogService.open(RegistrationFormComponent, {
+      width: '600px',
+      dialogClass: 'dummy-dialog',
+      data: { team: 'Golden State Warriors' },
+      transitionX: event.clientX,
+      transitionY: event.clientY,
+    });
+
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.loadData();
+    });
+  }
 
 }
+
 

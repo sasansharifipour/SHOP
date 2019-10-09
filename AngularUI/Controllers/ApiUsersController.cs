@@ -52,10 +52,8 @@ namespace AngularUI.Controllers
 
             var result = await _userService.CreateUserAsync(userIdentity, model.password);
 
-            /*        
-                if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
-            */
-            return new OkObjectResult("Account created");
+            string Data_Created = "User created successfully.";
+            return Ok(Json(Data_Created));
         }
 
         // PUT api/<controller>/5

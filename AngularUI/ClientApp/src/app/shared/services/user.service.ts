@@ -39,8 +39,8 @@ export class UserService extends BaseService {
     return this.http.get<UserViewModel[]>(this.base_User_api_URL);
   }
  
-  createUser(user: UserRegistration): Observable<UserRegistration> {
-    return this.http.post<UserRegistration>(this.base_User_api_URL, user);
+  createUser(user: UserRegistration): any {
+    return this.http.post(this.base_User_api_URL, user);
   }
   
   logout() {
