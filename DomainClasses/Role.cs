@@ -11,7 +11,7 @@ namespace DomainClasses
         {
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public override int Id { get; set; }
+        public override string Name { get; set; }
     }
 }

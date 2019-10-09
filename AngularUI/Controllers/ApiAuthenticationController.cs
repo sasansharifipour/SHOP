@@ -62,7 +62,7 @@ namespace AngularUI.Controllers
 
             if (user == null)
                 return BadRequest(Errors.AddErrorToModelState("login_failure",
-                    "نام کاربری و یا کلمه عبور اشتباه است", ModelState));
+                    "Username or password is incorrect.", ModelState));
 
             var result = await _tokenFactoryService.CreateJwtTokensAsync(user);
 

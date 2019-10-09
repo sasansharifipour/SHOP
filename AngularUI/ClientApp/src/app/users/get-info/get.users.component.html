@@ -1,37 +1,36 @@
+<div class="col-12 text-center">
 
-<div class="VazirMedium text-right" dir="rtl">
+  <div class="text-center mx-auto" style="width: 90%;">
 
-  <h1>لیست کاربران</h1>
+    <ngx-spinner bdColor="rgba(51,51,51,0.5)"
+                 size="large"
+                 color="#fff"
+                 type="ball-atom"
+                 fullScreen="true">
+      <p style="color: white"> Loading... </p>
+    </ngx-spinner>
+    
+    <table class="table table-striped" *ngIf="users">
+      <thead>
+        <tr class="text-center">
+          <th>Name</th>
+          <th>Family</th>
+          <th>Mobile Number</th>
+          <th>E-Mail</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" class="text-center">
+          <td>{{ user.name }}</td>
+          <td>{{ user.family }}</td>
+          <td>{{ user.mobile }}</td>
+          <td>{{ user.eMail }}</td>
+          <td>{{ user.userName }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <p>در اینجا لیست تمامی کاربران سامانه نمایش داده می شود.</p>
-
-  <ngx-spinner bdColor="rgba(51,51,51,0.5)"
-               size="large"
-               color="#fff"
-               type="ball-atom"
-               fullScreen="true">
-    <p style="color: white"> در حال بارگذاری اطلاعات </p>
-  </ngx-spinner>
-
-  <table class='table table-striped' *ngIf="users" dir="rtl">
-    <thead>
-      <tr class="text-center">
-        <th>نام</th>
-        <th>نام خانوادگی</th>
-        <th>شماره موبایل</th>
-        <th>ایمیل</th>
-        <th>نام کاربری</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users" dir="rtl" class="text-center">
-        <td>{{ user.name }}</td>
-        <td>{{ user.family }}</td>
-        <td>{{ user.mobile }}</td>
-        <td>{{ user.eMail }}</td>
-        <td>{{ user.userName }}</td>
-      </tr>
-    </tbody>
-  </table>
+  </div>
 
 </div>

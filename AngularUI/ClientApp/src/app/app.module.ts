@@ -1,5 +1,4 @@
 import './polyfills';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -25,12 +24,7 @@ import { OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule,
 import { GaugeChartModule } from 'angular-gauge-chart';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from './material-module';
-import {
-  MatButtonModule, MatNativeDateModule, MatIconModule,
-  MatSidenavModule, MatListModule, MatToolbarModule } from '@angular/material';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatTreeModule } from '@angular/material/tree';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { GaugesModule } from 'ng-canvas-gauges';
 
@@ -47,8 +41,7 @@ import { GaugesModule } from 'ng-canvas-gauges';
     LoginFormComponent,
     autoFocus
   ],
-  exports: [autoFocus, MatButtonModule, MatToolbarModule, MatNativeDateModule,
-    MatIconModule, MatSidenavModule, MatListModule],
+  exports: [autoFocus ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
@@ -57,15 +50,11 @@ import { GaugesModule } from 'ng-canvas-gauges';
     HttpModule,
     ShowHidePasswordModule,
     NgxChartsModule,
-    MatTabsModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatNativeDateModule, MatIconModule,
-    MatSidenavModule, MatListModule, MatToolbarModule,
     OwlDateTimeModule, OwlNativeDateTimeModule, OwlInputMaskModule ,
     GaugeChartModule,
     OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule ,
     ReactiveFormsModule,
-    MatTreeModule,
     GaugesModule,
     TreeViewModule,
     DemoMaterialModule,
