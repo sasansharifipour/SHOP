@@ -45,7 +45,7 @@ export class RegistrationFormComponent implements OnInit {
           type: 'success',
           life: 2000,
           verticalPosition: 'top',
-          horizontalPosition: 'bottom'
+          horizontalPosition: 'center'
         });
 
       } else {
