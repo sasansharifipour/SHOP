@@ -30,7 +30,7 @@ import { DemoMaterialModule } from './material-module';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { GaugesModule } from 'ng-canvas-gauges';
-
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   declarations: [
@@ -60,6 +60,7 @@ import { GaugesModule } from 'ng-canvas-gauges';
     OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlNotifierModule, OwlRippleModule ,
     ReactiveFormsModule,
     GaugesModule,
+    PortalModule,
     TreeViewModule,
     DemoMaterialModule,
     RouterModule.forRoot([
@@ -75,6 +76,9 @@ import { GaugesModule } from 'ng-canvas-gauges';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    RegistrationFormComponent
+  ]
 })
 export class AppModule { }

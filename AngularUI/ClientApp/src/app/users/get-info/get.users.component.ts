@@ -57,14 +57,14 @@ export class GetUsersComponent implements OnInit {
     const dialogRef = this.dialogService.open(RegistrationFormComponent, {
       width: '600px',
       dialogClass: 'dummy-dialog',
-      data: { team: 'Golden State Warriors' },
+      //data: { team: 'Golden State Warriors' },
       transitionX: event.clientX,
       transitionY: event.clientY,
     });
-
+    
     dialogRef.afterClosed().subscribe((data: any) => {
       this.loadData();
-    });
+    });/**/
   }
 
 }
