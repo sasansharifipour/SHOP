@@ -31,6 +31,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { GaugesModule } from 'ng-canvas-gauges';
 import { PortalModule } from '@angular/cdk/portal';
+import { EditUserComponent } from './users/edit-user/edit.user.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PortalModule } from '@angular/cdk/portal';
     GetUsersComponent,
     RegistrationFormComponent,
     LoginFormComponent,
+    EditUserComponent,
     autoFocus
   ],
   exports: [autoFocus ],
@@ -70,6 +72,7 @@ import { PortalModule } from '@angular/cdk/portal';
       { path: 'users/get', component: GetUsersComponent },
       { path: 'dashboard/firstpage', component: DashboardFirstPageComponent },
       { path: 'users/create', component: RegistrationFormComponent },
+      { path: 'users/edit', component: EditUserComponent },
       { path: 'users/login', component: LoginFormComponent },
     ])
   ],

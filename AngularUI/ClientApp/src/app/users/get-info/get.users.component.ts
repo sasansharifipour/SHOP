@@ -5,6 +5,7 @@ import { UserService } from '../../shared/services/user.service';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { RegistrationFormComponent } from '../registration-form/registration-form.component';
 import { OwlDialogService, OwlDialogRef } from 'owl-ng';
+import { EditUserComponent } from '../edit-user/edit.user.component';
 
 @Component({
   selector: 'app-users-get-component',
@@ -67,6 +68,20 @@ export class GetUsersComponent implements OnInit {
     });/**/
   }
 
+
+  public openDialog_editUser(event: any): void {
+    const dialogRef = this.dialogService.open(EditUserComponent, {
+      width: '600px',
+      dialogClass: 'dummy-dialog',
+      //data: { team: 'Golden State Warriors' },
+      transitionX: event.clientX,
+      transitionY: event.clientY,
+    });
+
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.loadData();
+    });/**/
+  }
 }
 
 
