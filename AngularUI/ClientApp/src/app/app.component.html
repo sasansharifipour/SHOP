@@ -9,6 +9,73 @@
   </div>
 </div>
 <div class="col-12" style="padding: 0px; height: 100%;">
+  <owl-fan-menu [spinable]="true" [movable]="true" [wingAngles] ="17"
+                [btnText] ="Menu" [menuPosition]="bottomLeft" *ngIf="status">
+
+    <owl-fan-menu-wing [wingColor]="'#DE321D'" >
+      <span style="font-size: x-small;">
+        Notifications
+      </span>
+      <owl-fan-menu-wing-icon>
+        <img src="../../assets/Images/NOC-tile.png" style="width: 30px; height: auto; padding: 2px;" />
+      </owl-fan-menu-wing-icon>
+    </owl-fan-menu-wing>
+
+    <owl-fan-menu-wing [wingColor]="'#E5451D'" [routerLink]='["/dashboard/firstpage"]'>
+      <span style="font-size: x-small;">
+        Reports & Dashboards
+      </span>
+      <owl-fan-menu-wing-icon>
+        <img src="../../assets/Images/busines intel-tile.png" style="width: 30px; height: auto; padding: 2px;" />
+      </owl-fan-menu-wing-icon>
+    </owl-fan-menu-wing>
+
+    <owl-fan-menu-wing [wingColor]="'#ED671F'">
+      <span style="font-size: x-small;">
+        Rules
+      </span>
+      <owl-fan-menu-wing-icon>
+        <img src="../../assets/Images/rules-tile.png" style="width: 30px; height: auto; padding: 2px;" />
+      </owl-fan-menu-wing-icon>
+    </owl-fan-menu-wing>
+
+    <owl-fan-menu-wing [wingColor]="'#F0831C'">
+      <span style="font-size: x-small;">
+        Business Entities
+      </span>
+      <owl-fan-menu-wing-icon>
+        <img src="../../assets/Images/Business Entities-tile.png" style="width: 30px; height: auto; padding: 2px;" />
+      </owl-fan-menu-wing-icon>
+    </owl-fan-menu-wing>
+
+    <owl-fan-menu-wing [wingColor]="'#F0991C'">
+      <span style="font-size: x-small;">
+        System Processes
+      </span>
+      <owl-fan-menu-wing-icon>
+        <img src="../../assets/Images/SystemProcesses-tile.png" style="width: 30px; height: auto; padding: 2px;" />
+      </owl-fan-menu-wing-icon>
+    </owl-fan-menu-wing>
+
+    <owl-fan-menu-wing [wingColor]="'#F7A71C'" [routerLink]='["/users/get"]'>
+      <span style="font-size: x-small;">
+        Administration
+      </span>
+      <owl-fan-menu-wing-icon>
+        <img src="../../assets/Images/admin-tile.png" style="width: 30px; height: auto; padding: 2px;" />
+      </owl-fan-menu-wing-icon>
+    </owl-fan-menu-wing>
+
+    <owl-fan-menu-wing [wingColor]="'#FCBB1B'">
+      <span style="font-size: x-small;">
+        Configuration
+      </span>
+      <owl-fan-menu-wing-icon>
+        <img src="../../assets/Images/configuration-tile.png" style="width: 30px; height: auto; padding: 2px;" />
+      </owl-fan-menu-wing-icon>
+    </owl-fan-menu-wing>
+  </owl-fan-menu>
+
   <mat-drawer-container style=" height: 100%;">
     <mat-drawer #snav mode="side" style="width: 15%;">
       <ejs-treeview [fields]="treeFields" *ngIf="status"></ejs-treeview>
