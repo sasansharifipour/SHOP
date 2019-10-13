@@ -9,6 +9,7 @@ using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AngularUI.Controllers
@@ -32,11 +33,46 @@ namespace AngularUI.Controllers
             return Mapper.Map<IEnumerable<User>, IList<UserViewModel>>(_userService.GetAllUsersAsync().Result);
         }
 
+        [AllowAnonymous]
+        [HttpPost("UserInfo")]
+        public async Task<UserViewModel> GetUserInfoAsync([FromBody] FindUserModel model)
+        {
+            return Mapper.Map<User, UserViewModel>(await _userService.FindUserAsync(model.username));
+        }
+
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
+        }
+
+        // POST api/<controller>
+        [HttpPost("UpdateUser")]
+        public async Task<IActionResult> UpdateUserProfile([FromBody]UpdateUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var userIdentity = _userService.FindUserAsync(model.userName).Result;
+
+            userIdentity.Name = model.name;
+            userIdentity.Family = model.family;
+            userIdentity.Mobile = model.mobile;
+
+            var result = await _userService.UpdateUserAsync(userIdentity, model.password);
+
+            string Data_Created = "";
+
+            if (result.Succeeded)
+            {
+                Data_Created = "User updated successfully.";
+                return Ok(Json(Data_Created));
+            }
+
+            return BadRequest(result.Errors.Select(s => s.Description).ToString());
         }
 
         // POST api/<controller>

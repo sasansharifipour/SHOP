@@ -49,9 +49,10 @@
               <mat-icon>add_circle</mat-icon>
             </span>
           </th>
-          <td class="text-center" style="text-align: center!important;" mat-cell *matCellDef="let row">
-            <span (click)="openDialog_editUser($event)" style="cursor: pointer; padding: 2px;">
-              <mat-icon [ngStyle]="{'color':'gray'}">edit</mat-icon>
+          <td class="text-center" style="text-align: center!important;" mat-cell *matCellDef="let user">
+            
+            <span (click)='openDialog_editUser($event,  user.eMail  )' style="cursor: pointer; padding: 2px;">
+              <mat-icon [ngStyle]="{'color':'green'}">edit</mat-icon>
             </span>
 
             <span (click)="openDialog_addUser($event)" style="cursor: pointer; padding: 2px;">

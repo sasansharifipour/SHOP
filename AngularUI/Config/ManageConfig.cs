@@ -43,7 +43,8 @@ namespace AngularUI.Config
             IConfiguration Configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+                options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
                 /*
                 UseMySql(
                 Configuration.GetConnectionString("ConnectionString"),

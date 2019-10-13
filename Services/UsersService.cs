@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using System;
+using Common;
 using DataLayer.Context;
 using DomainClasses;
 using Microsoft.AspNetCore.Identity;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
 
 namespace Services
 {
@@ -19,6 +21,8 @@ namespace Services
         
         Task<IdentityResult> CreateUserAsync(User entity, string password);
 
+        Task<IdentityResult> UpdateUserAsync(User entity, string password);
+
         Task<User> FindUserAsync(string userName, string password);
     }
 
@@ -27,7 +31,7 @@ namespace Services
         private readonly IUnitOfWork _uow;
         private readonly DbSet<User> _users;
         private readonly UserManager<User> _userManager;
-
+        
         public UsersService(IUnitOfWork uow,
             UserManager<User> userManager)
         {
@@ -35,16 +39,50 @@ namespace Services
             _uow.CheckArgumentIsNull(nameof(_uow));
 
             _users = _uow.Set<User>();
-            
             _userManager = userManager;
             _userManager.CheckArgumentIsNull(nameof(_userManager));
         }
-
+        
         public Task<IdentityResult> CreateUserAsync(User entity, string password)
         {
             entity.CheckArgumentIsNull(nameof(entity));
 
             return _userManager.CreateAsync(entity, password);
+        }
+
+        public async Task<IdentityResult> UpdateUserAsync(User entity, string password)
+        {
+            entity.CheckArgumentIsNull(nameof(entity));
+
+            if (!String.IsNullOrEmpty(password))
+            {
+                await RemoveUserPasswordAsync(entity);
+
+                await SetUserPasswordAsync(entity, password);
+            }
+
+            return await UpdateUserInfoAsync(entity);
+        }
+
+        public Task<IdentityResult> UpdateUserInfoAsync(User entity)
+        {
+            entity.CheckArgumentIsNull(nameof(entity));
+
+            return _userManager.UpdateAsync(entity);
+        }
+
+        public Task<IdentityResult> SetUserPasswordAsync(User entity, string password)
+        {
+            entity.CheckArgumentIsNull(nameof(entity));
+
+            return _userManager.AddPasswordAsync(entity, password);
+        }
+
+        public Task<IdentityResult> RemoveUserPasswordAsync(User entity)
+        {
+            entity.CheckArgumentIsNull(nameof(entity));
+
+            return _userManager.RemovePasswordAsync(entity);
         }
 
         public Task<User> FindUserAsync(string username)
@@ -81,5 +119,6 @@ namespace Services
         {
             return Task.Run(() => _users.ToListAsync());
         }
+
     }
 }

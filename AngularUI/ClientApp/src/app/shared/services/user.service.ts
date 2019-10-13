@@ -1,12 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { BaseService } from './base.service'
 import { LoginModel } from '../models/user.login.interface'
 import { UserViewModel } from '../models/user.viewmodel.inteface'
 import { UserRegistration } from '../models/user.registration.interface'
 import { Http, Response, Headers, RequestOptions  } from '@angular/http';
 import { TokenModel } from '../models/user.auth.token.interface';
+import { FindUserModel } from '../models/user.find.interface';
 
 
 @Injectable({
@@ -38,11 +39,21 @@ export class UserService extends BaseService {
   public loadUsers(): any {
     return this.http.get<UserViewModel[]>(this.base_User_api_URL);
   }
- 
+
+  updateUser(user: UserRegistration): any {
+    return this.http.post(this.base_User_api_URL + '/UpdateUser', user);
+  }
+
   createUser(user: UserRegistration): any {
     return this.http.post(this.base_User_api_URL, user);
   }
   
+  loadUserInfo(email: string): any {
+    let data: FindUserModel = { username : email };
+
+    return this.http.post(this.base_User_api_URL + '/UserInfo/', data);
+  }
+
   logout() {
     localStorage.removeItem('auth_token');
     this.currentUserTokenSubject.next('');

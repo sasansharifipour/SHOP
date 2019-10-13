@@ -69,11 +69,11 @@ export class GetUsersComponent implements OnInit {
   }
 
 
-  public openDialog_editUser(event: any): void {
+  public openDialog_editUser(event: any, email: string): void {
     const dialogRef = this.dialogService.open(EditUserComponent, {
       width: '600px',
       dialogClass: 'dummy-dialog',
-      //data: { team: 'Golden State Warriors' },
+      data: { email: email },
       transitionX: event.clientX,
       transitionY: event.clientY,
     });

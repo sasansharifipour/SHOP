@@ -13,7 +13,7 @@
           <div class="form-group">
             <owl-form-field>
               <input owlInput type="text" id="name" placeholder="Name" name="name"
-                     required autoFocus ngModel #name="ngModel" autocomplete="off">
+                     required autoFocus [(ngModel)] ="user.name" #name="ngModel" autocomplete="off">
 
               <owl-error *ngIf="name.errors?.required && name.touched">
                 Name is <strong>required</strong>
@@ -25,7 +25,7 @@
           <div class="form-group">
             <owl-form-field>
               <input owlInput type="text" id="family" placeholder="Family" name="family"
-                     required ngModel #family="ngModel" autocomplete="off">
+                     required [(ngModel)] ="user.family" #family="ngModel" autocomplete="off">
 
               <owl-error *ngIf="family.errors?.required && family.touched">
                 Family is <strong>required</strong>
@@ -37,7 +37,7 @@
           <div class="form-group">
             <owl-form-field >
               <input owlInput type="text" id="eMail" placeholder="E-Mail" name="eMail" [disabled] ="true"
-                     required email ngModel #eMail="ngModel" autocomplete="off">
+                     required email [(ngModel)] ="user.eMail" #eMail="ngModel" autocomplete="off" >
 
               <owl-error *ngIf="eMail.errors?.email && eMail.touched">
                 Please enter a valid email address
@@ -54,24 +54,20 @@
             <owl-form-field>
               <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
                      id="password" autocomplete="off" name="password" placeholder="Password"
-                     required ngModel>
+                     ngModel>
 
               <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
                 <mat-icon *ngIf="showPassword">visibility_off</mat-icon>
                 <mat-icon *ngIf="!showPassword">visibility</mat-icon>
               </span>
-
-              <owl-error *ngIf="password.errors?.required && password.touched">
-                Password is <strong>required</strong>
-              </owl-error>
-
+              
             </owl-form-field>
           </div>
           
           <div class="form-group">
             <owl-form-field>
               <input owlInput type="text" id="mobile" placeholder="Mobile Number" name="mobile"
-                     required ngModel #mobile="ngModel" autocomplete="off" [owlInputMask]="'(999) 999-9999'">
+                     required [(ngModel)] ="user.mobile" #mobile="ngModel" autocomplete="off" [owlInputMask]="'(999) 999-9999'">
               <owl-hint>(912) 345-6789 </owl-hint>
               <owl-error *ngIf="mobile.errors?.required && mobile.touched">
                 Mobile Number is <strong>required</strong>
@@ -83,7 +79,7 @@
           <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
 
             <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
-                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">Register</button>
+                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">Update</button>
             <ngx-spinner bdOpacity=1
                          bdColor="#333"
                          size="large"

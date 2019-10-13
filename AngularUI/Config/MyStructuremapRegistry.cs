@@ -24,13 +24,13 @@ namespace AngularUI.Config
             For<IUserClaimsPrincipalFactory<IdentityUser>>().LifecycleIs(Lifecycles.Container)
                 .Use<UserClaimsPrincipalFactory<IdentityUser>>();
 
-            For<UserManager<User>>().LifecycleIs(Lifecycles.Container)
+            For<UserManager<User>>().LifecycleIs(Lifecycles.Unique)
                 .Use<UserManager<User>>();
 
-            For<IUsersService>().LifecycleIs(Lifecycles.Container)
+            For<IUsersService>()
                 .Use<UsersService>();
 
-            For<IUnitOfWork>().LifecycleIs(Lifecycles.Container)
+            For<IUnitOfWork>().LifecycleIs(Lifecycles.Unique)
                 .Use<ApplicationDbContext>();
 
             For<ITokenStoreService>().LifecycleIs(Lifecycles.Container)
@@ -60,7 +60,7 @@ namespace AngularUI.Config
             For<ITokenValidatorService>().LifecycleIs(Lifecycles.Container)
                 .Use<TokenValidatorService>();
 
-            For<Controller>().LifecycleIs(Lifecycles.Container)
+            For<Controller>()
                 .Use<ApiUsersController>().Named("User");
 
             For<Controller>().LifecycleIs(Lifecycles.Container)

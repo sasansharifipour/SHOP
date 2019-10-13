@@ -8,7 +8,8 @@ namespace DataLayer.Context
         IUnitOfWork
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        { }
+        {
+        }
 
         public DbSet<Operator> Operators { get; set; }
 
