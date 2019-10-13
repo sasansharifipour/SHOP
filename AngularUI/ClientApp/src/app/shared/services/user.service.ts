@@ -44,6 +44,12 @@ export class UserService extends BaseService {
     return this.http.post(this.base_User_api_URL + '/UpdateUser', user);
   }
 
+  deleteUser(email: string): any {
+    let data: FindUserModel = { username: email };
+
+    return this.http.post(this.base_User_api_URL + '/DeleteUser/', data);
+  }
+
   createUser(user: UserRegistration): any {
     return this.http.post(this.base_User_api_URL, user);
   }

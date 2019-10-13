@@ -32,6 +32,7 @@ import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { GaugesModule } from 'ng-canvas-gauges';
 import { PortalModule } from '@angular/cdk/portal';
 import { EditUserComponent } from './users/edit-user/edit.user.component'
+import { DeleteUserComponent } from './users/delete-user-confirm/delete.user.component'
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EditUserComponent } from './users/edit-user/edit.user.component'
     RegistrationFormComponent,
     LoginFormComponent,
     EditUserComponent,
+    DeleteUserComponent,
     autoFocus
   ],
   exports: [autoFocus ],
@@ -73,6 +75,7 @@ import { EditUserComponent } from './users/edit-user/edit.user.component'
       { path: 'dashboard/firstpage', component: DashboardFirstPageComponent },
       { path: 'users/create', component: RegistrationFormComponent },
       { path: 'users/edit', component: EditUserComponent },
+      { path: 'users/delete', component: DeleteUserComponent },
       { path: 'users/login', component: LoginFormComponent },
     ])
   ],

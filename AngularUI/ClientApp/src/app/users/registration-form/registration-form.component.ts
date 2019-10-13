@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserRegistration } from '../../shared/models/user.registration.interface';
 import { UserService } from '../../shared/services/user.service';
-import { OwlNotifierService } from 'owl-ng';
+import { OwlNotifierService, OwlDialogRef } from 'owl-ng';
 
 @Component({
   selector: 'app-registration-form',
@@ -23,7 +23,8 @@ export class RegistrationFormComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(private router: Router, private spinner: NgxSpinnerService,
+  constructor(public dialogRef: OwlDialogRef<RegistrationFormComponent>,
+    private router: Router, private spinner: NgxSpinnerService,
     private userService: UserService, private notifier: OwlNotifierService) { }
 
   ngOnInit() { }
@@ -47,6 +48,8 @@ export class RegistrationFormComponent implements OnInit {
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
+
+        this.dialogRef.close();
 
       } else {
         this.isRequesting = false;

@@ -55,7 +55,7 @@
               <mat-icon [ngStyle]="{'color':'green'}">edit</mat-icon>
             </span>
 
-            <span (click)="openDialog_addUser($event)" style="cursor: pointer; padding: 2px;">
+            <span (click)='openDialog_deleteUser($event, user.eMail  )' style="cursor: pointer; padding: 2px;">
               <mat-icon [ngStyle]="{'color':'red'}">remove_circle</mat-icon>
             </span>
 

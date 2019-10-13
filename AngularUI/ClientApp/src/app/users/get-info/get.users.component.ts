@@ -6,6 +6,7 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { RegistrationFormComponent } from '../registration-form/registration-form.component';
 import { OwlDialogService, OwlDialogRef } from 'owl-ng';
 import { EditUserComponent } from '../edit-user/edit.user.component';
+import { DeleteUserComponent } from '../delete-user-confirm/delete.user.component';
 
 @Component({
   selector: 'app-users-get-component',
@@ -65,22 +66,36 @@ export class GetUsersComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe((data: any) => {
       this.loadData();
-    });/**/
+    });
   }
 
-
   public openDialog_editUser(event: any, email: string): void {
-    const dialogRef = this.dialogService.open(EditUserComponent, {
-      width: '600px',
-      dialogClass: 'dummy-dialog',
-      data: { email: email },
-      transitionX: event.clientX,
-      transitionY: event.clientY,
-    });
+    const dialogRef = this.dialogService.open(EditUserComponent,
+      {
+        width: '600px',
+        dialogClass: 'dummy-dialog',
+        data: { email: email },
+        transitionX: event.clientX,
+        transitionY: event.clientY,
+      });
 
     dialogRef.afterClosed().subscribe((data: any) => {
       this.loadData();
-    });/**/
+    });
+  }
+
+  public openDialog_deleteUser(event: any, email: string): void {
+      const dialogRef = this.dialogService.open(DeleteUserComponent, {
+        width: '600px',
+        dialogClass: 'dummy-dialog',
+        data: { email: email },
+        transitionX: event.clientX,
+        transitionY: event.clientY,
+      });
+
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.loadData();
+    });
   }
 }
 

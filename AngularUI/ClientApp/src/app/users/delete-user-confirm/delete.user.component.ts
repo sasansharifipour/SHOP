@@ -8,11 +8,11 @@ import { OWL_DIALOG_DATA } from 'owl-ng';
 import { UserViewModel } from 'src/app/shared/models/user.viewmodel.inteface';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit.user.component.html',
-  styleUrls: ['./edit.user.component.scss']
+  selector: 'app-delete-user',
+  templateUrl: './delete.user.component.html',
+  styleUrls: ['./delete.user.component.scss']
 })
-export class EditUserComponent implements OnInit {
+export class DeleteUserComponent implements OnInit {
 
   errors: string;  
   msg: string = '';
@@ -26,7 +26,7 @@ export class EditUserComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(public dialogRef: OwlDialogRef<EditUserComponent>,
+  constructor(public dialogRef: OwlDialogRef<DeleteUserComponent>,
     @Inject(OWL_DIALOG_DATA) public data: any,
     private router: Router,
     private spinner: NgxSpinnerService,
@@ -51,9 +51,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() { }
 
-  registerUser({ value, valid }: { value: UserRegistration, valid: boolean }) {
-    value.eMail = this.email;
-    value.userName = this.email;
+  deleteUser() {
 
     this.spinner.show();
 
@@ -61,7 +59,7 @@ export class EditUserComponent implements OnInit {
     this.isRequesting = true;
     this.errors = '';
 
-    this.userService.updateUser(value).subscribe(result => {
+    this.userService.deleteUser(this.email).subscribe(result => {
       if (result.value != '') {
         this.isRequesting = false;
         this.msg = result.value;
@@ -77,15 +75,20 @@ export class EditUserComponent implements OnInit {
 
       } else {
         this.isRequesting = false;
-        this.errors = 'Can not update user.';
+        this.errors = 'Can not delete user.';
       }
     }, error => {
       this.isRequesting = false;
-      this.errors = 'Can not update user.';
-      });
+      this.errors = 'Can not delete user.';
+    });
 
 
     this.spinner.hide();
+
   }
-  
+
+  onCancelClick() {
+    this.dialogRef.close();
+  }
+
 }

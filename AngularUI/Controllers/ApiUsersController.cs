@@ -27,7 +27,7 @@ namespace AngularUI.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         public IEnumerable<UserViewModel> Get()
         {
             return Mapper.Map<IEnumerable<User>, IList<UserViewModel>>(_userService.GetAllUsersAsync().Result);
@@ -38,6 +38,26 @@ namespace AngularUI.Controllers
         public async Task<UserViewModel> GetUserInfoAsync([FromBody] FindUserModel model)
         {
             return Mapper.Map<User, UserViewModel>(await _userService.FindUserAsync(model.username));
+        }
+
+        [AllowAnonymous]
+        [HttpPost("DeleteUser")]
+        public async Task<IActionResult> DeleteUserAsync([FromBody] FindUserModel model)
+        {
+            User user = await _userService.FindUserAsync(model.username);
+
+            var result = await _userService.DeleteUserAsync(user);
+
+
+            string Data_Created = "";
+
+            if (result.Succeeded)
+            {
+                Data_Created = "User deleted successfully.";
+                return Ok(Json(Data_Created));
+            }
+
+            return BadRequest(result.Errors.Select(s => s.Description).ToString());
         }
 
         // GET api/<controller>/5

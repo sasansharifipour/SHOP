@@ -18,7 +18,9 @@ namespace Services
         Task<User> FindUserAsync(int id);
 
         Task<List<User>> GetAllUsersAsync();
-        
+
+        Task<IdentityResult> DeleteUserAsync(User entity);
+
         Task<IdentityResult> CreateUserAsync(User entity, string password);
 
         Task<IdentityResult> UpdateUserAsync(User entity, string password);
@@ -62,6 +64,13 @@ namespace Services
             }
 
             return await UpdateUserInfoAsync(entity);
+        }
+
+        public Task<IdentityResult> DeleteUserAsync(User entity)
+        {
+            entity.CheckArgumentIsNull(nameof(entity));
+
+            return _userManager.DeleteAsync(entity);
         }
 
         public Task<IdentityResult> UpdateUserInfoAsync(User entity)

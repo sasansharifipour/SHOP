@@ -60,7 +60,7 @@ namespace AngularUI.Config
             For<ITokenValidatorService>().LifecycleIs(Lifecycles.Container)
                 .Use<TokenValidatorService>();
 
-            For<Controller>()
+            For<Controller>().LifecycleIs(Lifecycles.Unique)
                 .Use<ApiUsersController>().Named("User");
 
             For<Controller>().LifecycleIs(Lifecycles.Container)
