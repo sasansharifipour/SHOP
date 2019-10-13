@@ -41,6 +41,27 @@ namespace AngularUI.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost("UserChangePassword")]
+        public async Task<IActionResult> UserChangePasswordAsync([FromBody] UserChangePasswordModel model)
+        {
+            User user = await _userService.FindUserAsync(model.email);
+
+            var result = await _userService.ChangeUserPasswordAsync(user,
+                model.password, model.newpassword);
+
+
+            string Data_Created = "";
+
+            if (result.Succeeded)
+            {
+                Data_Created = "Password changed successfully.";
+                return Ok(Json(Data_Created));
+            }
+
+            return BadRequest(result.Errors.Select(s => s.Description).ToString());
+        }
+
+        [AllowAnonymous]
         [HttpPost("DeleteUser")]
         public async Task<IActionResult> DeleteUserAsync([FromBody] FindUserModel model)
         {

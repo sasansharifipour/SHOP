@@ -21,6 +21,9 @@ namespace Services
 
         Task<IdentityResult> DeleteUserAsync(User entity);
 
+        Task<IdentityResult> ChangeUserPasswordAsync(User entity
+            , string oldPassword, string newPassword);
+
         Task<IdentityResult> CreateUserAsync(User entity, string password);
 
         Task<IdentityResult> UpdateUserAsync(User entity, string password);
@@ -129,5 +132,12 @@ namespace Services
             return Task.Run(() => _users.ToListAsync());
         }
 
+        public Task<IdentityResult> ChangeUserPasswordAsync(User entity, 
+            string oldPassword, string newPassword)
+        {
+            entity.CheckArgumentIsNull(nameof(entity));
+
+            return _userManager.ChangePasswordAsync(entity, oldPassword,newPassword);
+        }
     }
 }

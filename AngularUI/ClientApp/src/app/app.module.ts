@@ -33,6 +33,7 @@ import { GaugesModule } from 'ng-canvas-gauges';
 import { PortalModule } from '@angular/cdk/portal';
 import { EditUserComponent } from './users/edit-user/edit.user.component'
 import { DeleteUserComponent } from './users/delete-user-confirm/delete.user.component'
+import { ChangeUserPasswordComponent } from './users/user-change-password/user.change.password.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { DeleteUserComponent } from './users/delete-user-confirm/delete.user.com
     LoginFormComponent,
     EditUserComponent,
     DeleteUserComponent,
+    ChangeUserPasswordComponent,
     autoFocus
   ],
   exports: [autoFocus ],
@@ -75,6 +77,7 @@ import { DeleteUserComponent } from './users/delete-user-confirm/delete.user.com
       { path: 'dashboard/firstpage', component: DashboardFirstPageComponent },
       { path: 'users/create', component: RegistrationFormComponent },
       { path: 'users/edit', component: EditUserComponent },
+      { path: 'users/changePassword', component: ChangeUserPasswordComponent },
       { path: 'users/delete', component: DeleteUserComponent },
       { path: 'users/login', component: LoginFormComponent },
     ])

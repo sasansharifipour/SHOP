@@ -7,6 +7,7 @@ import { RegistrationFormComponent } from '../registration-form/registration-for
 import { OwlDialogService, OwlDialogRef } from 'owl-ng';
 import { EditUserComponent } from '../edit-user/edit.user.component';
 import { DeleteUserComponent } from '../delete-user-confirm/delete.user.component';
+import { ChangeUserPasswordComponent } from '../user-change-password/user.change.password.component';
 
 @Component({
   selector: 'app-users-get-component',
@@ -82,6 +83,18 @@ export class GetUsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data: any) => {
       this.loadData();
     });
+  }
+
+  public openDialog_UserChangePassword(event: any, email: string): void {
+    const dialogRef = this.dialogService.open(ChangeUserPasswordComponent,
+      {
+        width: '600px',
+        dialogClass: 'dummy-dialog',
+        data: { email: email },
+        transitionX: event.clientX,
+        transitionY: event.clientY,
+      });
+
   }
 
   public openDialog_deleteUser(event: any, email: string): void {

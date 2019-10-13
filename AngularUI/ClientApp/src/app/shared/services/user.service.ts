@@ -8,6 +8,7 @@ import { UserRegistration } from '../models/user.registration.interface'
 import { Http, Response, Headers, RequestOptions  } from '@angular/http';
 import { TokenModel } from '../models/user.auth.token.interface';
 import { FindUserModel } from '../models/user.find.interface';
+import { UserChangePasswordModel } from '../models/user.change.password.model';
 
 
 @Injectable({
@@ -42,6 +43,10 @@ export class UserService extends BaseService {
 
   updateUser(user: UserRegistration): any {
     return this.http.post(this.base_User_api_URL + '/UpdateUser', user);
+  }
+
+  UserChangePassword(user: UserChangePasswordModel): any {
+    return this.http.post(this.base_User_api_URL + '/UserChangePassword', user);
   }
 
   deleteUser(email: string): any {
