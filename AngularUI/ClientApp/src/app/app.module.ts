@@ -31,9 +31,10 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { GaugesModule } from 'ng-canvas-gauges';
 import { PortalModule } from '@angular/cdk/portal';
-import { EditUserComponent } from './users/edit-user/edit.user.component'
-import { DeleteUserComponent } from './users/delete-user-confirm/delete.user.component'
+import { EditUserComponent } from './users/edit-user/edit.user.component';
+import { DeleteUserComponent } from './users/delete-user-confirm/delete.user.component';
 import { ChangeUserPasswordComponent } from './users/user-change-password/user.change.password.component';
+import { InlineLoginFormComponent } from './users/inline-login-form/inline-login-form.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ChangeUserPasswordComponent } from './users/user-change-password/user.c
     EditUserComponent,
     DeleteUserComponent,
     ChangeUserPasswordComponent,
+    InlineLoginFormComponent,
     autoFocus
   ],
   exports: [autoFocus ],
@@ -80,6 +82,7 @@ import { ChangeUserPasswordComponent } from './users/user-change-password/user.c
       { path: 'users/changePassword', component: ChangeUserPasswordComponent },
       { path: 'users/delete', component: DeleteUserComponent },
       { path: 'users/login', component: LoginFormComponent },
+      { path: 'users/inlinelogin', component: InlineLoginFormComponent },
     ])
   ],
   providers: [
