@@ -78,6 +78,26 @@
 
   <mat-drawer-container style=" height: 100%;">
     <mat-drawer #snav mode="side" style="width: 15%;">
+
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" [@detailExpand]>
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [@detailExpand]>
+          <!-- use a disabled button to provide padding for tree leaf -->
+          <button mat-icon-button disabled></button>
+          {{node.name}}
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding  [@detailExpand]>
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.name}}
+        </mat-tree-node>
+      </mat-tree>
+
       <ejs-treeview [fields]="treeFields" *ngIf="status"></ejs-treeview>
     </mat-drawer>
     <mat-drawer-content style=" height: 100%; background-color: white;">

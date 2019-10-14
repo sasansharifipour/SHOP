@@ -8,14 +8,87 @@ import { map } from 'rxjs/operators';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { UserService } from './shared/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { trigger, transition, animate, style } from '@angular/animations';
+
+interface FoodNode {
+  name: string;
+  children?: FoodNode[];
+}
+
+const TREE_DATA: FoodNode[] = [
+  {
+    name: 'Fruit',
+    children: [
+      { name: 'Apple' },
+      { name: 'Banana' },
+      { name: 'Fruit loops' },
+    ]
+  }, {
+    name: 'Vegetables',
+    children: [
+      {
+        name: 'Green',
+        children: [
+          { name: 'Broccoli' },
+          { name: 'Brussel sprouts' },
+        ]
+      }, {
+        name: 'Orange',
+        children: [
+          { name: 'Pumpkins' },
+          { name: 'Carrots' },
+        ]
+      },
+    ]
+  },
+];
+
+/** Flat node with expandable and level information */
+interface ExampleFlatNode {
+  expandable: boolean;
+  name: string;
+  level: number;
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  animations: [
+    trigger(
+      'detailExpand', [
+        transition(':enter', [
+          style({ opacity: 0 }),
+          animate(1000)
+        ]),
+        transition(':leave', [
+          style({ height: '*' }),
+          animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({ height: '0px', minHeight: '0', display: 'none' }))
+        ])
+      ]
+    )
+  ]
 })
 
 export class AppComponent implements OnInit, OnDestroy {
+
+  private transformer = (node: FoodNode, level: number) => {
+    return {
+      expandable: !!node.children && node.children.length > 0,
+      name: node.name,
+      level: level,
+    };
+  }
+
+  treeControl = new FlatTreeControl<ExampleFlatNode>(
+    node => node.level, node => node.expandable);
+
+  treeFlattener = new MatTreeFlattener(
+    this.transformer, node => node.level, node => node.expandable, node => node.children);
+
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   [x: string]: any;
   title = 'app';
@@ -82,6 +155,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   constructor(dir: Directionality, private router: Router, private userService: UserService) {
+    this.dataSource.data = TREE_DATA;
     /*
     this.isRtl = dir.value === 'rtl';
 
