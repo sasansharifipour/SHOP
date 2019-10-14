@@ -86,10 +86,10 @@ namespace Services
                                         technologyId = selected_technology.Id,
 
                                         MM_CMServiceRequest = 
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         RANAP_RABAssignment_Response = 
-                                            reader.GetInt32(reader.GetOrdinal("response")),
+                                            reader.GetDouble(reader.GetOrdinal("response")),
 
                                         accurance_date = 
                                             reader.GetDateTime(reader.GetOrdinal("accurance_date"))
@@ -144,11 +144,11 @@ namespace Services
 
                                         technologyId = selected_technology.Id,
 
-                                        data = ( (double) reader.GetInt32(reader.GetOrdinal("response")) 
-                                               / (double) reader.GetInt32(reader.GetOrdinal("request"))),
+                                        data = ( (double) reader.GetDouble(reader.GetOrdinal("response")) 
+                                               / (double) reader.GetDouble(reader.GetOrdinal("request"))),
 
                                         weight =
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         accurance_date =
                                             reader.GetDateTime(reader.GetOrdinal("accurance_date"))
@@ -203,11 +203,11 @@ namespace Services
 
                                         technologyId = selected_technology.Id,
 
-                                        data = ((double)reader.GetInt32(reader.GetOrdinal("response"))
-                                               / (double)reader.GetInt32(reader.GetOrdinal("request"))),
+                                        data = ((double)reader.GetDouble(reader.GetOrdinal("response"))
+                                               / (double)reader.GetDouble(reader.GetOrdinal("request"))),
 
                                         weight =
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         accurance_date =
                                             reader.GetDateTime(reader.GetOrdinal("accurance_date"))
@@ -264,10 +264,10 @@ namespace Services
                                         technologyId = selected_technology.Id,
 
                                         RANAP_RABAssignment_Request = 
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         RANAP_RABAssignment_Response =
-                                            reader.GetInt32(reader.GetOrdinal("response")),
+                                            reader.GetDouble(reader.GetOrdinal("response")),
 
                                         accurance_date = reader.GetDateTime
                                             (reader.GetOrdinal("accurance_date"))
@@ -326,10 +326,10 @@ namespace Services
                                         technologyId = selected_technology.Id,
 
                                         MM_CMServiceRequest =
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         RANAP_RABAssignment_Response =
-                                            reader.GetInt32(reader.GetOrdinal("response")),
+                                            reader.GetDouble(reader.GetOrdinal("response")),
 
                                         accurance_date =
                                             reader.GetDateTime(reader.GetOrdinal("accurance_date"))
@@ -387,11 +387,11 @@ namespace Services
 
                                         technologyId = selected_technology.Id,
 
-                                        data = ((double)reader.GetInt32(reader.GetOrdinal("response"))
-                                               / (double)reader.GetInt32(reader.GetOrdinal("request"))),
+                                        data = ((double)reader.GetDouble(reader.GetOrdinal("response"))
+                                               / (double)reader.GetDouble(reader.GetOrdinal("request"))),
 
                                         weight =
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         accurance_date =
                                             reader.GetDateTime(reader.GetOrdinal("accurance_date"))
@@ -449,11 +449,11 @@ namespace Services
 
                                         technologyId = selected_technology.Id,
 
-                                        data = ((double)reader.GetInt32(reader.GetOrdinal("response"))
-                                               / (double)reader.GetInt32(reader.GetOrdinal("request"))),
+                                        data = ((double)reader.GetDouble(reader.GetOrdinal("response"))
+                                               / (double)reader.GetDouble(reader.GetOrdinal("request"))),
 
                                         weight =
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         accurance_date =
                                             reader.GetDateTime(reader.GetOrdinal("accurance_date"))
@@ -512,10 +512,10 @@ namespace Services
                                         technologyId = selected_technology.Id,
 
                                         RANAP_RABAssignment_Request =
-                                            reader.GetInt32(reader.GetOrdinal("request")),
+                                            reader.GetDouble(reader.GetOrdinal("request")),
 
                                         RANAP_RABAssignment_Response =
-                                            reader.GetInt32(reader.GetOrdinal("response")),
+                                            reader.GetDouble(reader.GetOrdinal("response")),
 
                                         accurance_date = reader.GetDateTime
                                             (reader.GetOrdinal("accurance_date"))

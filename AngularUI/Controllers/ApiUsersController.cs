@@ -27,7 +27,7 @@ namespace AngularUI.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public IEnumerable<UserViewModel> Get()
         {
             return Mapper.Map<IEnumerable<User>, IList<UserViewModel>>(_userService.GetAllUsersAsync().Result);
