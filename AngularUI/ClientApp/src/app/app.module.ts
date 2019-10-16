@@ -16,6 +16,7 @@ import { autoFocus } from './auto.focus.directive';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { LoginFormComponent } from './users/login-form/login-form.component'
 import { DashboardFirstPageComponent } from './Dashboard/First-Page/first-page'
+import { DashboardSecondPageComponent } from './Dashboard/Second-Page/second-page'
 import { HttpModule } from '@angular/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -35,6 +36,7 @@ import { EditUserComponent } from './users/edit-user/edit.user.component';
 import { DeleteUserComponent } from './users/delete-user-confirm/delete.user.component';
 import { ChangeUserPasswordComponent } from './users/user-change-password/user.change.password.component';
 import { InlineLoginFormComponent } from './users/inline-login-form/inline-login-form.component';
+import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { InlineLoginFormComponent } from './users/inline-login-form/inline-login
     NavMenuComponent,
     HomeComponent,
     DashboardFirstPageComponent,
+    DashboardSecondPageComponent,
+    ShowDataComponent,
     CounterComponent,
     FetchDataComponent,
     GetUsersComponent,
@@ -77,6 +81,7 @@ import { InlineLoginFormComponent } from './users/inline-login-form/inline-login
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'users/get', component: GetUsersComponent },
       { path: 'dashboard/firstpage', component: DashboardFirstPageComponent },
+      { path: 'dashboard/secondpage', component: DashboardSecondPageComponent },
       { path: 'users/create', component: RegistrationFormComponent },
       { path: 'users/edit', component: EditUserComponent },
       { path: 'users/changePassword', component: ChangeUserPasswordComponent },

@@ -48,6 +48,7 @@
     <None Remove="ClientApp\src\app\shared\models\cssr.result.ts" />
     <None Remove="ClientApp\src\app\shared\models\dataset.for.chart.ts" />
     <None Remove="ClientApp\src\app\shared\models\gauge.chart.view.model.ts" />
+    <None Remove="ClientApp\src\app\shared\models\Gauge.Result.ts" />
     <None Remove="ClientApp\src\app\shared\models\line.chart.view.model.interface.ts" />
     <None Remove="ClientApp\src\app\shared\models\operator.model.ts" />
     <None Remove="ClientApp\src\app\shared\models\tch.asr.result.interface.ts" />
@@ -73,6 +74,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\cssr.result.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\dataset.for.chart.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\gauge.chart.view.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\Gauge.Result.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\line.chart.view.model.interface.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\operator.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\tch.asr.result.interface.ts" />

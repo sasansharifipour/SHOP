@@ -1,0 +1,106 @@
+<owl-accordion>
+  <owl-expansion-panel>
+    <owl-expansion-panel-header>
+      <owl-expansion-panel-title>
+        Filters
+      </owl-expansion-panel-title>
+    </owl-expansion-panel-header>
+
+    <div class="col-3" style="display: inline-block;">
+
+      <mat-card>
+        <mat-card-content>
+          <p><b>Select Operator :</b></p>
+          <div class="" *ngFor="let item of checklist_Operators" style="display: inline; padding: 10px;">
+            <mat-checkbox color='primary' class="example-margin" [(ngModel)]="item.isSelected" (change)="filterChnage()">{{item.value}}</mat-checkbox>
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+    <div class="col-3" style="display: inline-block;">
+
+      <mat-card>
+        <mat-card-content>
+          <p><b>Select Technology :</b></p>
+          <div class="" *ngFor="let item of checklist_Technology" style="display: inline; padding: 10px;">
+            <mat-checkbox color='primary' class="example-margin" [(ngModel)]="item.isSelected" (change)="filterChnage()">{{item.value}}</mat-checkbox>
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+    <div class="col-6" style="display: inline-block;">
+
+
+      <mat-card>
+        <mat-card-content>
+          <p><b>Select Time :</b></p>
+
+          <div class="col-6" style="display: inline-block;">
+            <owl-form-field>
+              <input owlInput [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12"
+                     [(ngModel)]="selectedMoments"
+                     [selectMode]="'rangeFrom'"
+                     (ngModelChange)="filterChnage()"
+                     placeholder="Start Date Time">
+            </owl-form-field>
+            <owl-date-time #dt12></owl-date-time>
+          </div>
+          <div class="col-6" style="display: inline-block;">
+            <owl-form-field>
+              <input owlInput [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13"
+                     [(ngModel)]="selectedMoments"
+                     [selectMode]="'rangeTo'"
+                     (ngModelChange)="filterChnage()"
+                     placeholder="End Date Time">
+            </owl-form-field>
+            <owl-date-time #dt13></owl-date-time>
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+    </div>
+
+  </owl-expansion-panel>
+</owl-accordion>
+  
+<div class="col-12" style="font-family: Open Sans; font-weight: lighter!important; padding: 2px;">
+
+  <Show-Data-Chart
+    [checklist_Operators]="checklist_Operators"
+    [checklist_Technology]="checklist_Technology"
+
+    [Left_Variables_Title]="['CSSR','SDCCH Drop Rate']"
+    [First_Variable_Left_Gauge_Data] ="First_Variable_Left_Gauge_Data"
+    [Second_Variable_Left_Gauge_Data] ="Second_Variable_Left_Gauge_Data"
+    [First_Variable_Left_Line_Current_Month_Data]="First_Variable_Left_Line_Current_Month_Data"
+    [Second_Variable_Left_Line_Current_Month_Data]="Second_Variable_Left_Line_Current_Month_Data"
+    [First_Variable_Left_Line_Last_Month_Data]="First_Variable_Left_Line_Last_Month_Data"
+    [Second_Variable_Left_Line_Last_Month_Data]="Second_Variable_Left_Line_Last_Month_Data"
+
+    [Right_Variables_Title]="['TCH ASR','CS IRAT HOSR']"
+    [First_Variable_Right_Gauge_Data] ="First_Variable_Right_Gauge_Data"
+    [Second_Variable_Right_Gauge_Data] ="Second_Variable_Right_Gauge_Data"
+    [First_Variable_Right_Line_Current_Month_Data]="First_Variable_Right_Line_Current_Month_Data"
+    [Second_Variable_Right_Line_Current_Month_Data]="Second_Variable_Right_Line_Current_Month_Data"
+    [First_Variable_Right_Line_Last_Month_Data]="First_Variable_Right_Line_Last_Month_Data"
+    [Second_Variable_Right_Line_Last_Month_Data]="Second_Variable_Right_Line_Last_Month_Data"
+
+
+  >
+
+  </Show-Data-Chart>
+
+</div>
+
+
