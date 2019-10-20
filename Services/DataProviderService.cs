@@ -22,6 +22,9 @@ namespace Services
 
         List<Gauge_Result_ViewModel> getCS_IRAT_HOSR(int[] operators, int[] technologies
             , DateTime? fromDate, DateTime? toDate);
+
+        List<Gauge_Result_ViewModel> getRRC_CCSR(int[] operators, int[] technologies
+            , DateTime fromDate, DateTime toDate);
     }
 
     public class DataProviderService : IDataProviderService
@@ -187,6 +190,37 @@ namespace Services
                     else
                         data_for_one_operator_technology = _dataGatheringService.getCS_IRAT_HOSR(selectedOperator,
                             selectedTechnology);
+
+                    data_for_all_operator_technology.AddRange(data_for_one_operator_technology);
+
+                }
+            }
+
+
+            return data_for_all_operator_technology;
+        }
+
+        public List<Gauge_Result_ViewModel> getRRC_CCSR(int[] operators, int[] technologies
+            , DateTime fromDate, DateTime toDate)
+        {
+            List<Gauge_Result_ViewModel> data_for_all_operator_technology
+                = new List<Gauge_Result_ViewModel>();
+
+            foreach (var selected_operator_id in operators)
+            {
+                Operator selectedOperator =
+                    _operatorService.FindOperatorAsync(selected_operator_id).Result;
+
+                foreach (var selected_technology_id in technologies)
+                {
+                    Technology selectedTechnology =
+                        _technologyService.FindTechnologyAsync(selected_technology_id).Result;
+
+                    List<Gauge_Result_ViewModel> data_for_one_operator_technology =
+                        new List<Gauge_Result_ViewModel>();
+
+                    data_for_one_operator_technology = _dataGatheringService.getRRC_CCSR
+                        (selectedOperator, selectedTechnology, fromDate, toDate);
 
                     data_for_all_operator_technology.AddRange(data_for_one_operator_technology);
 

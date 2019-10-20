@@ -1,6 +1,5 @@
 import { Injectable, ViewEncapsulation } from '@angular/core';
-import { ViewChild, Component, OnInit, ElementRef  } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component } from '@angular/core';
 import { DataProviderService } from '../../shared/services/data.provider.service';
 import { OperatorService } from "../../shared/services/Operator.Service"
 import { TechnologyService } from "../../shared/services/Technology.Service"
@@ -8,10 +7,8 @@ import { TechnologyService } from "../../shared/services/Technology.Service"
 import { OperatorModel } from 'src/app/shared/models/operator.model';
 import { TechnologyModel } from 'src/app/shared/models/technology.viewmodel';
 import { TCH_ASR_Result_ViewModel } from 'src/app/shared/models/tch.asr.result.interface';
-import { ChartDataset } from 'src/app/shared/models/dataset.for.chart';
 import { CSSR_Result_ViewModel } from 'src/app/shared/models/cssr.result';
 import { Line_Chart_ViewModel } from 'src/app/shared/models/line.chart.view.model.interface';
-import { MatTabChangeEvent } from '@angular/material';
 import { Gauge_Chart_ViewModel } from 'src/app/shared/models/gauge.chart.view.model';
 import { Gauge_Result_ViewModel } from 'src/app/shared/models/Gauge.Result';
 
@@ -23,7 +20,7 @@ import { Gauge_Result_ViewModel } from 'src/app/shared/models/Gauge.Result';
 })
 
 @Injectable()
-export class DashboardSecondPageComponent implements OnInit {
+export class DashboardSecondPageComponent {
 
   public checklist_Operators: any;
   public checklist_Technology: any;
@@ -55,22 +52,22 @@ export class DashboardSecondPageComponent implements OnInit {
   First_Variable_Right_Line_Last_Month_Data: Array<Line_Chart_ViewModel>;
   Second_Variable_Right_Line_Last_Month_Data: Array<Line_Chart_ViewModel>;
 
-  loadCSSR_Current_Month(operators: Array<number>, technologies: Array<number>
+  loadRRC_CCSR_Current_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
     let temp_data: Array<Gauge_Result_ViewModel> = [];
 
-    this.dataProviderService.getCSSR_Current_Month(operators, technologies, fromDateInput, toDateInput).subscribe(
+    this.dataProviderService.getRRC_CCSR_Current_Month(operators, technologies, fromDateInput, toDateInput).subscribe(
 
-      (result: Array<CSSR_Result_ViewModel>) => {
+      (result: Array<Gauge_Chart_ViewModel>) => {
 
         result.forEach((item) => {
 
             let temp_item: Gauge_Result_ViewModel =
             {
               accurance_date: item.accurance_date,
-              numerator: item.ranaP_RABAssignment_Response,
-              denominator: item.mM_CMServiceRequest,
+              numerator: (item.data * item.weight),
+              denominator: item.weight,
               operatorId: item.operatorId,
               technologyId: item.technologyId
             };
@@ -85,7 +82,32 @@ export class DashboardSecondPageComponent implements OnInit {
     );
 
   }
-  
+
+
+  loadRRC_CCSR_For_Line_Current_Month(operators: Array<number>, technologies: Array<number>
+    , fromDateInput: Date, toDateInput: Date) {
+
+    this.dataProviderService.getRRC_CCSR_For_Line_Current_Month(operators, technologies
+      , fromDateInput, toDateInput).subscribe(
+      (result: Array<Line_Chart_ViewModel>) => {
+        this.First_Variable_Left_Line_Current_Month_Data = result;
+      }
+    );
+
+  }
+
+  loadRRC_CCSR_For_Line_Last_Month(operators: Array<number>, technologies: Array<number>
+    , fromDateInput: Date, toDateInput: Date) {
+
+    this.dataProviderService.getRRC_CCSR_For_Line_Last_Month(operators, technologies, fromDateInput, toDateInput)
+      .subscribe(
+      (result: Array<Line_Chart_ViewModel>) => {
+        this.First_Variable_Left_Line_Last_Month_Data = result;
+      }
+    );
+
+  }
+
   loadSDCCH_DR_Current_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
@@ -176,18 +198,6 @@ export class DashboardSecondPageComponent implements OnInit {
       );
   }
   
-  loadCSSR_For_Line_Current_Month(operators: Array<number>, technologies: Array<number>
-    , fromDateInput: Date, toDateInput: Date) {
-
-    this.dataProviderService.getCSSR_For_Line_Current_Month(operators, technologies
-      , fromDateInput, toDateInput).subscribe(
-      (result: Array<Line_Chart_ViewModel>) => {
-        this.First_Variable_Left_Line_Current_Month_Data = result;
-      }
-    );
-
-  }
-  
   loadSDCCH_DR_For_Line_Current_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
@@ -224,19 +234,7 @@ export class DashboardSecondPageComponent implements OnInit {
     );
 
   }
-
-  loadCSSR_For_Line_Last_Month(operators: Array<number>, technologies: Array<number>
-    , fromDateInput: Date, toDateInput: Date) {
-
-    this.dataProviderService.getCSSR_For_Line_Last_Month(operators, technologies, fromDateInput, toDateInput).subscribe(
-
-      (result: Array<Line_Chart_ViewModel>) => {
-        this.First_Variable_Left_Line_Last_Month_Data = result;
-      }
-    );
-
-  }
-
+  
   loadSDCCH_DR_For_Line_Last_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
@@ -289,13 +287,13 @@ export class DashboardSecondPageComponent implements OnInit {
     this.getChecked_OperatorItemList();
     this.getChecked_TechnologyItemList();
 
-    this.loadCSSR_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
+    this.loadRRC_CCSR_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
       this.selectedMoments[0], this.selectedMoments[1]);
 
-    this.loadCSSR_For_Line_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
+    this.loadRRC_CCSR_For_Line_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
       this.selectedMoments[0], this.selectedMoments[1]);
 
-    this.loadCSSR_For_Line_Last_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
+    this.loadRRC_CCSR_For_Line_Last_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
       this.selectedMoments[0], this.selectedMoments[1]);
   }
 
@@ -429,11 +427,4 @@ export class DashboardSecondPageComponent implements OnInit {
 
     this.loadData();
   }
-
-  ngOnInit() {
-  }
-  
-  ngAfterViewInit() {
-  }
-
 }
