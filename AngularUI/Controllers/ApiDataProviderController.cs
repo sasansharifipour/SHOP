@@ -345,5 +345,75 @@ namespace AngularUI.Controllers
         }
         //-------------------------------------------------------------------------------------------------------------------------
 
+        [AllowAnonymous]
+        [HttpPost("getRRC_CSSR")]
+        public List<Gauge_Result_ViewModel> GetRRC_CSSR([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getRRC_CSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getRRC_CSSR_Current_Month")]
+        public List<Gauge_Result_ViewModel> GetRRC_CSSR_Current_Month([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getRRC_CSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getRRC_CSSR_For_Line_Current_Month")]
+        public List<line_chart_data_view_model> GetRRC_CSSR_For_Line_Current_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getRRC_CSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getRRC_CSSR_For_Line_Last_Month")]
+        public List<line_chart_data_view_model> GetRRC_CSSR_For_Line_Last_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            DateTime startDateTime = model.fromDate;
+            model.fromDate = model.fromDate.AddMonths(-1);
+            model.toDate = startDateTime;
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getRRC_CSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
     }
 }

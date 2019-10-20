@@ -458,4 +458,93 @@ export class DataProviderService extends BaseService {
 
     return this.http.post(this.base_Data_Provider_api_URL + '/getRRC_CCSR_For_Line_Last_Month', data);
   }
+
+  //-----------------------------------------------------------------------------------------------
+  public getRRC_CSSR(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    let sum_data = 0;
+    let sum_weight = 0;
+
+    this.http.post<any>(this.base_Data_Provider_api_URL + '/GetRRC_CSSR', data).subscribe(
+      (result: Array<Gauge_Chart_ViewModel>) => {
+        result.forEach((item) => {
+          sum_data += (item.data * item.weight);
+          sum_weight += item.weight;
+        }
+        );
+      }
+    );
+
+    return ((sum_data / sum_weight) * 100);
+  }
+
+  public getRRC_CSSR_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getRRC_CSSR_Current_Month', data);
+  }
+
+  public getRRC_CSSR_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getRRC_CSSR_Last_Month', data);
+  }
+
+  public getRRC_CSSR_For_Line_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getRRC_CSSR_For_Line_Current_Month', data);
+  }
+
+  public getRRC_CSSR_For_Line_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getRRC_CSSR_For_Line_Last_Month', data);
+  }
 }

@@ -82,8 +82,7 @@ export class DashboardSecondPageComponent {
     );
 
   }
-
-
+  
   loadRRC_CCSR_For_Line_Current_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
@@ -108,17 +107,17 @@ export class DashboardSecondPageComponent {
 
   }
 
-  loadSDCCH_DR_Current_Month(operators: Array<number>, technologies: Array<number>
+  loadRRC_CSSR_Current_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
     let temp_data: Array<Gauge_Result_ViewModel> = [];
 
-    this.dataProviderService.getSDCCH_DR_Current_Month(operators, technologies, fromDateInput, toDateInput).subscribe(
+    this.dataProviderService.getRRC_CSSR_Current_Month(operators, technologies, fromDateInput, toDateInput).subscribe(
 
       (result: Array<Gauge_Chart_ViewModel>) => {
-        
+
         result.forEach((item) => {
-          
+
             let temp_item: Gauge_Result_ViewModel =
             {
               accurance_date: item.accurance_date,
@@ -129,8 +128,8 @@ export class DashboardSecondPageComponent {
             };
 
             temp_data.push(temp_item);
-          
-        }
+
+          }
         );
 
         this.Second_Variable_Left_Gauge_Data = temp_data;
@@ -139,6 +138,30 @@ export class DashboardSecondPageComponent {
 
   }
 
+  loadRRC_CSSR_For_Line_Current_Month(operators: Array<number>, technologies: Array<number>
+    , fromDateInput: Date, toDateInput: Date) {
+
+    this.dataProviderService.getRRC_CSSR_For_Line_Current_Month(operators, technologies
+      , fromDateInput, toDateInput).subscribe(
+      (result: Array<Line_Chart_ViewModel>) => {
+        this.Second_Variable_Left_Line_Current_Month_Data = result;
+      }
+    );
+
+  }
+
+  loadRRC_CSSR_For_Line_Last_Month(operators: Array<number>, technologies: Array<number>
+    , fromDateInput: Date, toDateInput: Date) {
+
+    this.dataProviderService.getRRC_CSSR_For_Line_Last_Month(operators, technologies, fromDateInput, toDateInput)
+      .subscribe(
+        (result: Array<Line_Chart_ViewModel>) => {
+          this.Second_Variable_Left_Line_Last_Month_Data = result;
+        }
+      );
+
+  }
+  
   loadTCH_ASR_Current_Month(operators: Array<number>,
     technologies: Array<number>,
     fromDateInput: Date,
@@ -198,18 +221,6 @@ export class DashboardSecondPageComponent {
       );
   }
   
-  loadSDCCH_DR_For_Line_Current_Month(operators: Array<number>, technologies: Array<number>
-    , fromDateInput: Date, toDateInput: Date) {
-
-    this.dataProviderService.getSDCCH_DR_For_Line_Current_Month(operators, technologies, fromDateInput, toDateInput).subscribe(
-
-      (result: Array<Line_Chart_ViewModel>) => {
-        this.Second_Variable_Left_Line_Current_Month_Data = result;
-      }
-    );
-
-  }
-  
   loadTCH_ASR_For_Line_Current_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
@@ -235,18 +246,6 @@ export class DashboardSecondPageComponent {
 
   }
   
-  loadSDCCH_DR_For_Line_Last_Month(operators: Array<number>, technologies: Array<number>
-    , fromDateInput: Date, toDateInput: Date) {
-
-    this.dataProviderService.getSDCCH_DR_For_Line_Last_Month(operators, technologies, fromDateInput, toDateInput).subscribe(
-
-      (result: Array<Line_Chart_ViewModel>) => {
-        this.Second_Variable_Left_Line_Last_Month_Data = result;
-      }
-    );
-
-  }
-
   loadTCH_ASR_For_Line_Last_Month(operators: Array<number>, technologies: Array<number>
     , fromDateInput: Date, toDateInput: Date) {
 
@@ -302,13 +301,13 @@ export class DashboardSecondPageComponent {
     this.getChecked_OperatorItemList();
     this.getChecked_TechnologyItemList();
 
-    this.loadSDCCH_DR_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
+    this.loadRRC_CSSR_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
       this.selectedMoments[0], this.selectedMoments[1]);
 
-    this.loadSDCCH_DR_For_Line_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
+    this.loadRRC_CSSR_For_Line_Current_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
       this.selectedMoments[0], this.selectedMoments[1]);
 
-    this.loadSDCCH_DR_For_Line_Last_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
+    this.loadRRC_CSSR_For_Line_Last_Month(this.checkedList_Operators_Id, this.checkedList_Technology_Id,
       this.selectedMoments[0], this.selectedMoments[1]);
   }
 
