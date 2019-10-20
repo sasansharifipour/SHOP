@@ -39,6 +39,8 @@ export class ShowDataComponent {
   @Input() checklist_Operators: any;
   @Input() checklist_Technology: any;
 
+  @Input() id: string;
+
   @Input() Left_Variables_Title: string[];
   @Input() Right_Variables_Title: string[];
 
@@ -91,7 +93,7 @@ export class ShowDataComponent {
   private _Second_Variable_Left_Line_Last_Month_Data: Array<Line_Chart_ViewModel>;
   private _First_Variable_Right_Line_Last_Month_Data: Array<Line_Chart_ViewModel>;
   private _Second_Variable_Right_Line_Last_Month_Data: Array<Line_Chart_ViewModel>;
-
+  
   @Input() set First_Variable_Left_Gauge_Data(value: Array<Gauge_Result_ViewModel>) {
 
     this._First_Variable_Left_Gauge_Data = value;
@@ -714,7 +716,7 @@ export class ShowDataComponent {
 
     }
 
-    this.FirstTabBarChart_Current_Month = new Chart('FirstTabBarChart_Current_Month',
+    this.FirstTabBarChart_Current_Month = new Chart(this.id + '_FirstTabBarChart_Current_Month' ,
       {
         type: 'horizontalBar',
         data: {
@@ -759,7 +761,7 @@ export class ShowDataComponent {
 
     }
 
-    this.SecondTabBarChart_Current_Month = new Chart('SecondTabBarChart_Current_Month',
+    this.SecondTabBarChart_Current_Month = new Chart(this.id + '_SecondTabBarChart_Current_Month',
       {
         type: 'horizontalBar',
         data: {
@@ -805,7 +807,7 @@ export class ShowDataComponent {
 
       }
 
-      this.FirstLineChart_Current_Month = new Chart('FirstLineChart_Current_Month',
+      this.FirstLineChart_Current_Month = new Chart(this.id + '_FirstLineChart_Current_Month',
         {
           type: 'line',
           data: {
@@ -846,7 +848,7 @@ export class ShowDataComponent {
 
       }
 
-      this.SecondLineChart_Current_Month = new Chart('SecondLineChart_Current_Month',
+      this.SecondLineChart_Current_Month = new Chart(this.id + '_SecondLineChart_Current_Month',
         {
           type: 'line',
           data: {
@@ -893,7 +895,7 @@ export class ShowDataComponent {
 
         }
 
-        this.CompareLineChart_Current_Month = new Chart('CompareLineChart_Current_Month',
+        this.CompareLineChart_Current_Month = new Chart(this.id + '_CompareLineChart_Current_Month',
           {
             type: 'line',
             data: {
@@ -942,7 +944,7 @@ export class ShowDataComponent {
 
         }
 
-        this.CompareLineChart_Last_Month = new Chart('CompareLineChart_Last_Month',
+        this.CompareLineChart_Last_Month = new Chart(this.id + '_CompareLineChart_Last_Month',
           {
             type: 'line',
             data: {
@@ -987,7 +989,7 @@ export class ShowDataComponent {
 
       }
 
-      this.FirstLineChart_Last_Month = new Chart('FirstLineChart_Last_Month',
+      this.FirstLineChart_Last_Month = new Chart(this.id + '_FirstLineChart_Last_Month',
         {
           type: 'line',
           data: {
@@ -1028,7 +1030,7 @@ export class ShowDataComponent {
 
       }
 
-      this.SecondLineChart_Last_Month = new Chart('SecondLineChart_Last_Month',
+      this.SecondLineChart_Last_Month = new Chart(this.id + '_SecondLineChart_Last_Month',
         {
           type: 'line',
           data: {
