@@ -415,5 +415,432 @@ namespace AngularUI.Controllers
             return result;
         }
         //-------------------------------------------------------------------------------------------------------------------------
+
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Active_Set_update")]
+        public List<Gauge_Result_ViewModel> GetSuccess_Active_Set_update([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getSuccess_Active_Set_update(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Active_Set_update_Current_Month")]
+        public List<Gauge_Result_ViewModel> GetSuccess_Active_Set_update_Current_Month([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getSuccess_Active_Set_update(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Active_Set_update_For_Line_Current_Month")]
+        public List<line_chart_data_view_model> GetSuccess_Active_Set_update_For_Line_Current_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getSuccess_Active_Set_update(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Active_Set_update_For_Line_Last_Month")]
+        public List<line_chart_data_view_model> GetSuccess_Active_Set_update_For_Line_Last_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            DateTime startDateTime = model.fromDate;
+            model.fromDate = model.fromDate.AddMonths(-1);
+            model.toDate = startDateTime;
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getSuccess_Active_Set_update(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+        
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Attach_Request")]
+        public List<Gauge_Result_ViewModel> GetSuccess_Attach_Request([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getSuccess_Attach_Request(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Attach_Request_Current_Month")]
+        public List<Gauge_Result_ViewModel> GetSuccess_Attach_Request_Current_Month([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getSuccess_Attach_Request(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Attach_Request_For_Line_Current_Month")]
+        public List<line_chart_data_view_model> GetSuccess_Attach_Request_For_Line_Current_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getSuccess_Attach_Request(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSuccess_Attach_Request_For_Line_Last_Month")]
+        public List<line_chart_data_view_model> GetSuccess_Attach_Request_For_Line_Last_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            DateTime startDateTime = model.fromDate;
+            model.fromDate = model.fromDate.AddMonths(-1);
+            model.toDate = startDateTime;
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getSuccess_Attach_Request(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+
+        [AllowAnonymous]
+        [HttpPost("getARSR")]
+        public List<Gauge_Result_ViewModel> GetARSR([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getARSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getARSR_Current_Month")]
+        public List<Gauge_Result_ViewModel> GetARSR_Current_Month([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getARSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getARSR_For_Line_Current_Month")]
+        public List<line_chart_data_view_model> GetARSR_For_Line_Current_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getARSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getARSR_For_Line_Last_Month")]
+        public List<line_chart_data_view_model> GetARSR_For_Line_Last_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            DateTime startDateTime = model.fromDate;
+            model.fromDate = model.fromDate.AddMonths(-1);
+            model.toDate = startDateTime;
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getARSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+
+        [AllowAnonymous]
+        [HttpPost("getRSRR")]
+        public List<Gauge_Result_ViewModel> GetRSRR([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getRSRR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getRSRR_Current_Month")]
+        public List<Gauge_Result_ViewModel> GetRSRR_Current_Month([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getRSRR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getRSRR_For_Line_Current_Month")]
+        public List<line_chart_data_view_model> GetRSRR_For_Line_Current_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getRSRR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getRSRR_For_Line_Last_Month")]
+        public List<line_chart_data_view_model> GetRSRR_For_Line_Last_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            DateTime startDateTime = model.fromDate;
+            model.fromDate = model.fromDate.AddMonths(-1);
+            model.toDate = startDateTime;
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getRSRR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+
+        [AllowAnonymous]
+        [HttpPost("getTotal_successful_Call")]
+        public List<Gauge_Result_ViewModel> GetTotal_successful_Call([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getTotal_successful_Call(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getTotal_successful_Call_Current_Month")]
+        public List<Gauge_Result_ViewModel> GetTotal_successful_Call_Current_Month([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getTotal_successful_Call(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getTotal_successful_Call_For_Line_Current_Month")]
+        public List<line_chart_data_view_model> GetTotal_successful_Call_For_Line_Current_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getTotal_successful_Call(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getTotal_successful_Call_For_Line_Last_Month")]
+        public List<line_chart_data_view_model> GetTotal_successful_Call_For_Line_Last_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            DateTime startDateTime = model.fromDate;
+            model.fromDate = model.fromDate.AddMonths(-1);
+            model.toDate = startDateTime;
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getTotal_successful_Call(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+
+        [AllowAnonymous]
+        [HttpPost("getSMSSR")]
+        public List<Gauge_Result_ViewModel> GetSMSSR([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getSMSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSMSSR_Current_Month")]
+        public List<Gauge_Result_ViewModel> GetSMSSR_Current_Month([FromBody]DateFilterModel model)
+        {
+            return _dataProviderService.getSMSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSMSSR_For_Line_Current_Month")]
+        public List<line_chart_data_view_model> GetSMSSR_For_Line_Current_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getSMSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("getSMSSR_For_Line_Last_Month")]
+        public List<line_chart_data_view_model> GetSMSSR_For_Line_Last_Month([FromBody]DateFilterModel model)
+        {
+            List<line_chart_data_view_model> result = new List<line_chart_data_view_model>();
+
+            DateTime startDateTime = model.fromDate;
+            model.fromDate = model.fromDate.AddMonths(-1);
+            model.toDate = startDateTime;
+
+            List<Gauge_Result_ViewModel> data = _dataProviderService.getSMSSR(model.operators, model.technologies,
+                model.fromDate, model.toDate);
+
+            var groups = data.GroupBy(s => s.accurance_date);
+
+            foreach (var group in groups)
+            {
+                line_chart_data_view_model temp = new line_chart_data_view_model();
+
+                temp.accurance_date = group.Key;
+
+                temp.data = group.Sum(r => r.data * r.weight) / group.Sum(r => r.weight);
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+
     }
 }

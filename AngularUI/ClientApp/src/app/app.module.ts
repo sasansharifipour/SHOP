@@ -14,9 +14,10 @@ import { GetUsersComponent } from './users/get-info/get.users.component';
 import { RegistrationFormComponent } from './users/registration-form/registration-form.component';
 import { autoFocus } from './auto.focus.directive';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-import { LoginFormComponent } from './users/login-form/login-form.component'
-import { DashboardFirstPageComponent } from './Dashboard/First-Page/first-page'
-import { DashboardSecondPageComponent } from './Dashboard/Second-Page/second-page'
+import { LoginFormComponent } from './users/login-form/login-form.component';
+import { DashboardFirstPageComponent } from './Dashboard/First-Page/first-page';
+import { DashboardSecondPageComponent } from './Dashboard/Second-Page/second-page';
+import { DashboardThirdPageComponent } from './Dashboard/Third-Page/third-page';
 import { HttpModule } from '@angular/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -45,6 +46,7 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
     HomeComponent,
     DashboardFirstPageComponent,
     DashboardSecondPageComponent,
+    DashboardThirdPageComponent,
     ShowDataComponent,
     CounterComponent,
     FetchDataComponent,
@@ -82,6 +84,7 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
       { path: 'users/get', component: GetUsersComponent },
       { path: 'dashboard/firstpage', component: DashboardFirstPageComponent },
       { path: 'dashboard/secondpage', component: DashboardSecondPageComponent },
+      { path: 'dashboard/thirdpage', component: DashboardThirdPageComponent },
       { path: 'users/create', component: RegistrationFormComponent },
       { path: 'users/edit', component: EditUserComponent },
       { path: 'users/changePassword', component: ChangeUserPasswordComponent },

@@ -547,4 +547,538 @@ export class DataProviderService extends BaseService {
 
     return this.http.post(this.base_Data_Provider_api_URL + '/getRRC_CSSR_For_Line_Last_Month', data);
   }
+
+  //-----------------------------------------------------------------------------------------------
+  public getSuccess_Active_Set_update(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    let sum_data = 0;
+    let sum_weight = 0;
+
+    this.http.post<any>(this.base_Data_Provider_api_URL + '/GetSuccess_Active_Set_update', data).subscribe(
+      (result: Array<Gauge_Chart_ViewModel>) => {
+        result.forEach((item) => {
+          sum_data += (item.data * item.weight);
+          sum_weight += item.weight;
+        }
+        );
+      }
+    );
+
+    return ((sum_data / sum_weight) * 100);
+  }
+
+  public getSuccess_Active_Set_update_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getSuccess_Active_Set_update_Current_Month', data);
+  }
+
+  public getSuccess_Active_Set_update_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getSuccess_Active_Set_update_Last_Month', data);
+  }
+
+  public getSuccess_Active_Set_update_For_Line_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getSuccess_Active_Set_update_For_Line_Current_Month', data);
+  }
+
+  public getSuccess_Active_Set_update_For_Line_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getSuccess_Active_Set_update_For_Line_Last_Month', data);
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  public getSuccess_Attach_Request(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    let sum_data = 0;
+    let sum_weight = 0;
+
+    this.http.post<any>(this.base_Data_Provider_api_URL + '/GetSuccess_Attach_Request', data).subscribe(
+      (result: Array<Gauge_Chart_ViewModel>) => {
+        result.forEach((item) => {
+          sum_data += (item.data * item.weight);
+          sum_weight += item.weight;
+        }
+        );
+      }
+    );
+
+    return ((sum_data / sum_weight) * 100);
+  }
+
+  public getSuccess_Attach_Request_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getSuccess_Attach_Request_Current_Month', data);
+  }
+
+  public getSuccess_Attach_Request_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getSuccess_Attach_Request_Last_Month', data);
+  }
+
+  public getSuccess_Attach_Request_For_Line_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getSuccess_Attach_Request_For_Line_Current_Month', data);
+  }
+
+  public getSuccess_Attach_Request_For_Line_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getSuccess_Attach_Request_For_Line_Last_Month', data);
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  public getARSR(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    let sum_data = 0;
+    let sum_weight = 0;
+
+    this.http.post<any>(this.base_Data_Provider_api_URL + '/GetARSR', data).subscribe(
+      (result: Array<Gauge_Chart_ViewModel>) => {
+        result.forEach((item) => {
+          sum_data += (item.data * item.weight);
+          sum_weight += item.weight;
+        }
+        );
+      }
+    );
+
+    return ((sum_data / sum_weight) * 100);
+  }
+
+  public getARSR_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getARSR_Current_Month', data);
+  }
+
+  public getARSR_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getARSR_Last_Month', data);
+  }
+
+  public getARSR_For_Line_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getARSR_For_Line_Current_Month', data);
+  }
+
+  public getARSR_For_Line_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getARSR_For_Line_Last_Month', data);
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  public getRSRR(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    let sum_data = 0;
+    let sum_weight = 0;
+
+    this.http.post<any>(this.base_Data_Provider_api_URL + '/GetRSRR', data).subscribe(
+      (result: Array<Gauge_Chart_ViewModel>) => {
+        result.forEach((item) => {
+          sum_data += (item.data * item.weight);
+          sum_weight += item.weight;
+        }
+        );
+      }
+    );
+
+    return ((sum_data / sum_weight) * 100);
+  }
+
+  public getRSRR_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getRSRR_Current_Month', data);
+  }
+
+  public getRSRR_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getRSRR_Last_Month', data);
+  }
+
+  public getRSRR_For_Line_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getRSRR_For_Line_Current_Month', data);
+  }
+
+  public getRSRR_For_Line_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getRSRR_For_Line_Last_Month', data);
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  public getTotal_successful_Call(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    let sum_data = 0;
+    let sum_weight = 0;
+
+    this.http.post<any>(this.base_Data_Provider_api_URL + '/GetTotal_successful_Call', data).subscribe(
+      (result: Array<Gauge_Chart_ViewModel>) => {
+        result.forEach((item) => {
+          sum_data += (item.data * item.weight);
+          sum_weight += item.weight;
+        }
+        );
+      }
+    );
+
+    return ((sum_data / sum_weight) * 100);
+  }
+
+  public getTotal_successful_Call_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getTotal_successful_Call_Current_Month', data);
+  }
+
+  public getTotal_successful_Call_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getTotal_successful_Call_Last_Month', data);
+  }
+
+  public getTotal_successful_Call_For_Line_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getTotal_successful_Call_For_Line_Current_Month', data);
+  }
+
+  public getTotal_successful_Call_For_Line_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getTotal_successful_Call_For_Line_Last_Month', data);
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  public getSMSSR(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    let sum_data = 0;
+    let sum_weight = 0;
+
+    this.http.post<any>(this.base_Data_Provider_api_URL + '/GetSMSSR', data).subscribe(
+      (result: Array<Gauge_Chart_ViewModel>) => {
+        result.forEach((item) => {
+          sum_data += (item.data * item.weight);
+          sum_weight += item.weight;
+        }
+        );
+      }
+    );
+
+    return ((sum_data / sum_weight) * 100);
+  }
+
+  public getSMSSR_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getSMSSR_Current_Month', data);
+  }
+
+  public getSMSSR_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post<number>(this.base_Data_Provider_api_URL + '/getSMSSR_Last_Month', data);
+  }
+
+  public getSMSSR_For_Line_Current_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getSMSSR_For_Line_Current_Month', data);
+  }
+
+  public getSMSSR_For_Line_Last_Month(operators: Array<number>,
+    technologies: Array<number>,
+    fromDateInput: Date,
+    toDateInput: Date): any {
+    let data = <DataReciverSingle>
+      {
+        operators: operators,
+        technologies: technologies,
+        fromDate: fromDateInput,
+        toDate: toDateInput
+      };
+
+    return this.http.post(this.base_Data_Provider_api_URL + '/getSMSSR_For_Line_Last_Month', data);
+  }
 }
