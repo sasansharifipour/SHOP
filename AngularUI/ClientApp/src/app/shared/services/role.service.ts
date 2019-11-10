@@ -40,14 +40,4 @@ export class RoleService extends BaseService {
     return this.http.put(this.base_Role_api_URL + '/' + id, role);
   }
 
-  /*
-
-  UserChangePassword(user: UserChangePasswordModel): any {
-    return this.http.post(this.base_User_api_URL + '/UserChangePassword', user);
-  }
-
-
-  
-  
-  */
 }

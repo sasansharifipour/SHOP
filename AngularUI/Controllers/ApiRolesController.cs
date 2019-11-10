@@ -56,36 +56,7 @@ namespace AngularUI.Controllers
         {
             return (await _Roleservice.GetRoleAsync(id));
         }
- /*
-        // POST api/<controller>
-        [HttpPost("UpdateRole")]
-        public async Task<IActionResult> UpdateRole([FromBody]UpdateUserViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            var userIdentity = _Roleservice.FindUserAsync(model.userName).Result;
-
-            userIdentity.Name = model.name;
-            userIdentity.Family = model.family;
-            userIdentity.Mobile = model.mobile;
-
-            var result = await _Roleservice.UpdateUserAsync(userIdentity, model.password);
-
-            string Data_Created = "";
-
-            if (result.Succeeded)
-            {
-                Data_Created = "User updated successfully.";
-                return Ok(Json(Data_Created));
-            }
-
-            return BadRequest(result.Errors.Select(s => s.Description).ToString());
-        }
-       
-        */
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody]RoleUpdateModel model)
@@ -100,12 +71,12 @@ namespace AngularUI.Controllers
             string Data_Created = "Role updated successfully.";
             return Ok(Json(Data_Created));
         }
-        
+
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            Role role =  _Roleservice.GetRoleAsync(id).Result;
+            Role role = _Roleservice.GetRoleAsync(id).Result;
 
             var result = _Roleservice.DeleteAsync(role).Result;
 
