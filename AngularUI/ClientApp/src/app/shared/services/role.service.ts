@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { BaseService } from './base.service'
 import { RoleViewModel } from '../models/role.viewmodel.inteface';
 
@@ -12,8 +11,6 @@ import { RoleViewModel } from '../models/role.viewmodel.inteface';
 export class RoleService extends BaseService {
 
   private base_Role_api_URL: string;
-  private error;
-
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
     super();

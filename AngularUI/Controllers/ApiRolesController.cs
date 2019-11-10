@@ -28,9 +28,10 @@ namespace AngularUI.Controllers
         // GET: api/<controller>
         [HttpGet]
         [Authorize]
-        public IEnumerable<Role> Get()
+        public IEnumerable<RoleUpdateModel> Get()
         {
-            return _Roleservice.GetAllRolesAsync().Result;
+            var data = _Roleservice.GetAllRolesAsync().Result;
+            return Mapper.Map<IEnumerable<Role>, IEnumerable<RoleUpdateModel>>(data);
         }
 
         // POST api/<controller>
