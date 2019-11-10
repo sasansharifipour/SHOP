@@ -1,0 +1,49 @@
+
+<div class="col-12"
+     style="padding-top: 20px;">
+  
+    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">Please Enter The Information</h5>      
+    </div>
+
+    <div class="row text-right">
+      <div class="col-12">
+        <form #f="ngForm" novalidate (ngSubmit)="registerRole(f)">
+
+          <div class="form-group">
+            <owl-form-field>
+              <input owlInput type="text" id="name" placeholder="Name" name="name"
+                     required autoFocus ngModel #name="ngModel" autocomplete="off">
+
+              <owl-error *ngIf="name.errors?.required && name.touched">
+                Name is <strong>required</strong>
+              </owl-error>
+
+            </owl-form-field>
+          </div>
+          
+          <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+
+            <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
+                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">Register</button>
+            <ngx-spinner bdOpacity=1
+                         bdColor="#333"
+                         size="large"
+                         color="#fff"
+                         type="ball-atom"
+                         fullScreen="true">
+              <p style="color: white"> Loading... </p>
+            </ngx-spinner>
+
+          </div>
+
+          <div *ngIf="errors" class="alert alert-danger text-left" role="alert">
+            <strong>ERROR : </strong> {{errors}}
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+</div>
+

@@ -12,7 +12,7 @@
   <owl-fan-menu [spinable]="true" [movable]="true" [wingAngles] ="17"
                 [btnText] ="'Menu'" [menuPosition]="'bottomLeft'"  *ngIf="status">
 
-    <owl-fan-menu-wing [wingColor]="'#DE321D'" >
+    <owl-fan-menu-wing [wingColor]="'#DE321D'"  [routerLink]='["/roles/get"]'>
       <span style="font-size: x-small;">
         Notifications
       </span>

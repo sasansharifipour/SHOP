@@ -11,6 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { GetUsersComponent } from './users/get-info/get.users.component';
+import { GetRolesComponent } from './roles/show-all/get.roles.component';
+import { AddRoleComponent } from './roles/add/add.role.component';
+import { EditRoleComponent } from './roles/edit/edit.role.component';
+import { DeleteRoleComponent } from './roles/delete-confirm/delete.role.component';
 import { RegistrationFormComponent } from './users/registration-form/registration-form.component';
 import { autoFocus } from './auto.focus.directive';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
@@ -51,6 +55,10 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
     CounterComponent,
     FetchDataComponent,
     GetUsersComponent,
+    GetRolesComponent,
+    AddRoleComponent,
+    EditRoleComponent,
+    DeleteRoleComponent,
     RegistrationFormComponent,
     LoginFormComponent,
     EditUserComponent,
@@ -82,6 +90,10 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'users/get', component: GetUsersComponent },
+      { path: 'roles/get', component: GetRolesComponent },
+      { path: 'roles/add', component: AddRoleComponent },
+      { path: 'roles/edit', component: EditRoleComponent },
+      { path: 'roles/delete', component: DeleteRoleComponent },
       { path: 'dashboard/firstpage', component: DashboardFirstPageComponent },
       { path: 'dashboard/secondpage', component: DashboardSecondPageComponent },
       { path: 'dashboard/thirdpage', component: DashboardThirdPageComponent },

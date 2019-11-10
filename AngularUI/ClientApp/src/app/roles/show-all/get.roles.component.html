@@ -1,0 +1,60 @@
+<div class="col-12 text-center">
+  
+  <div class="text-center mx-auto" style="width: 90%; padding-top: 20px;">
+
+    <ngx-spinner bdColor="rgba(51,51,51,0.5)"
+                 size="large"
+                 color="#fff"
+                 type="ball-atom"
+                 fullScreen="true">
+      <p style="color: white"> Loading... </p>
+    </ngx-spinner>
+
+    <owl-form-field>
+      <input owlInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </owl-form-field>
+
+    <div class="mat-elevation-z8  text-center">
+
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let role"> {{role.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let role"> {{role.name}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="actions">
+          <th class="text-center"  mat-header-cell *matHeaderCellDef>
+            <span (click)="openDialog_add($event)" style="cursor: pointer;">
+              <mat-icon>add_circle</mat-icon>
+            </span>
+          </th>
+          <td class="text-center" style="text-align: center!important;" mat-cell *matCellDef="let role">
+            
+            <span (click)='openDialog_edit($event,  role.id  )' style="cursor: pointer; padding: 2px;">
+              <mat-icon [ngStyle]="{'color':'green'}">edit</mat-icon>
+            </span>
+
+            <span (click)='openDialog_delete($event, role.id  )' style="cursor: pointer; padding: 2px;">
+              <mat-icon [ngStyle]="{'color':'red'}">remove_circle</mat-icon>
+            </span>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+  </div>
+</div>
+

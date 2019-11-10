@@ -20,7 +20,11 @@ namespace Services
 
         Task<Role> GetRoleAsync(int id);
 
-        void DeleteRoleAsync(Role role);
+        Task<IdentityResult> CreateRoleAsync(Role entity);
+
+        Task<IdentityResult> DeleteAsync(Role role);
+
+        Task<IdentityResult> UpdateAsync(int id,string name);
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
 
@@ -33,9 +37,11 @@ namespace Services
         private readonly DbSet<User> _users;
         private readonly DbSet<Role> _roles;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
 
         public RolesService(IUnitOfWork uow,
-            UserManager<User> userManager)
+            UserManager<User> userManager,
+            RoleManager<Role> roleManager)
         {
             _uow = uow;
             _uow.CheckArgumentIsNull(nameof(_uow));
@@ -43,13 +49,23 @@ namespace Services
             _userManager = userManager;
             _userManager.CheckArgumentIsNull(nameof(_userManager));
 
+            _roleManager = roleManager;
+            _roleManager.CheckArgumentIsNull(nameof(_roleManager));
+
             _users = _uow.Set<User>();
-            _roles = _uow.Set<Role>()
+            _roles = _uow.Set<Role>();
         }
 
         public Task<IList<string>> FindUserRolesAsync(User user)
         {
             return _userManager.GetRolesAsync(user);
+        }
+
+        public Task<IdentityResult> CreateRoleAsync(Role entity)
+        {
+            entity.CheckArgumentIsNull(nameof(entity));
+
+            return _roleManager.CreateAsync(entity);
         }
 
         public async Task<bool> IsUserInRoleAsync(User user, string roleName)
@@ -72,12 +88,22 @@ namespace Services
             return Task.Run(() => _roles.FirstOrDefaultAsync(role => role.Id == id));
         }
 
-        public void DeleteRoleAsync(Role role)
+        public Task<IdentityResult> DeleteAsync(Role role)
         {
             role.CheckArgumentIsNull(nameof(role));
 
-            _roles.Remove(role);
-            _uow.SaveChangesAsync();
+            return _roleManager.DeleteAsync(role);
+        }
+
+        public Task<IdentityResult> UpdateAsync(int id, string name)
+        {
+            Role item = _roleManager.FindByIdAsync(id.ToString()).Result;
+
+            if (item == null)
+                return null;
+
+            item.Name = name;
+            return _roleManager.UpdateAsync(item);
         }
     }
 }

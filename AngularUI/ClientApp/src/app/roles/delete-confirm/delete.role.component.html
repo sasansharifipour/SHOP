@@ -1,0 +1,50 @@
+
+<div class="col-12"
+     style="padding-top: 20px;">
+  
+    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">Are you sure for deleting this item?</h5>      
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        
+          <div class="form-group">
+
+            <h6>Id : {{ item.id }} </h6>
+
+            <h6>Name : {{ item.name }} </h6>
+
+          </div>
+
+          
+          <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+
+            <button class="owlng-btn" owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'"  (click)="delete()">
+              Delete
+            </button>
+
+            <button class="owlng-btn" owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" (click)="onCancelClick()">
+              Cancel
+            </button>
+
+            <ngx-spinner bdOpacity=1
+                         bdColor="#333"
+                         size="large"
+                         color="#fff"
+                         type="ball-atom"
+                         fullScreen="true">
+              <p style="color: white"> Loading... </p>
+            </ngx-spinner>
+
+          </div>
+
+          <div *ngIf="errors" class="alert alert-danger text-left" role="alert">
+            <strong>ERROR : </strong> {{errors}}
+          </div>
+
+      </div>
+    </div>
+
+</div>
+

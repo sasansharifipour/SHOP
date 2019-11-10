@@ -16,6 +16,10 @@ namespace AngularUI.Config
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<User, UserViewModel>();
 
+                cfg.CreateMap<RoleUpdateModel, Role>().ForMember(
+                    destination => destination.ConcurrencyStamp, opts => opts.Ignore()).ForMember(
+                    destination => destination.NormalizedName, opts => opts.Ignore());
+
                 cfg.CreateMap<Operator, OperatorViewModel>();
 
                 cfg.CreateMap<Technology, TechnologyViewModel>();
