@@ -27,7 +27,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  OwlRadioModule, OwlDialogModule, OwlInputModule, OwlFanMenuModule, OwlClockModule ,
+  OwlRadioModule, OwlDialogModule, OwlInputModule, OwlFanMenuModule, OwlClockModule, OwlSelectModule,
   OwlAccordionModule, OwlInputMaskModule, OwlNotifierModule, OwlRippleModule, OwlFormFieldModule 
 } from 'owl-ng';
 import { GaugeChartModule } from 'angular-gauge-chart';
@@ -79,7 +79,7 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
     BrowserAnimationsModule,
     OwlDateTimeModule, OwlNativeDateTimeModule, OwlInputMaskModule, OwlDialogModule, OwlFanMenuModule, OwlClockModule ,
     GaugeChartModule,
-    OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlNotifierModule, OwlRippleModule ,
+    OwlRadioModule, OwlFormFieldModule, OwlInputModule, OwlAccordionModule, OwlNotifierModule, OwlRippleModule, OwlSelectModule,
     ReactiveFormsModule,
     GaugesModule,
     PortalModule,

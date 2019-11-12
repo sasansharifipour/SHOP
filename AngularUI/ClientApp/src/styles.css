@@ -11,26 +11,64 @@
 @import 'app/shared/styles/FontStyles.css';
 @import 'app/shared/styles/ElementStyles.css';
 
-.owlng-btn {
-  padding: .5em;
-  width: 100%;
-  max-width: 8em;
-  height: 2.5em;
-  background: #fff;
-  color: #3f51b5;
-  border: 1px solid #3f51b5;
-  margin: .1em;
-  text-decoration: none !important;
-  cursor: pointer;
-  text-align: center;
-  zoom: 1;
-  display: inline-block;
-  outline: 0;
-  border-radius: 3px;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-tap-highlight-color: transparent
+.half-circle {
+  position: fixed;
+  top: -80px;
+  left: 45%;
+  height: 140px;
+  background-color: #673ab7;
+  box-shadow: -2px 6px 12px #311b92;
+  width: 140px;
+  border-bottom-left-radius: 100% 100%;
+  border-bottom-right-radius: 100% 100%;
+  z-index: 5;
+  transition: opacity .2s ease-in-out;
+  opacity: 0.7;
 }
+  .half-circle:hover {
+    cursor: pointer;
+    opacity: 1;
+    top:0px;
+  }
+
+.showing-flag {
+  position: absolute !important;
+  bottom: 10px;
+  left: 50px;
+  width: 40px !important;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.showing-flag-option{
+  right: 10px;
+  position: absolute!important;
+  top: 20%;
+  border-radius: 100%;
+  width: 30px!important;
+  height: 30px;
+}
+
+  .owlng-btn {
+    padding: .5em;
+    width: 100%;
+    max-width: 8em;
+    height: 2.5em;
+    background: #fff;
+    color: #3f51b5;
+    border: 1px solid #3f51b5;
+    margin: .1em;
+    text-decoration: none !important;
+    cursor: pointer;
+    text-align: center;
+    zoom: 1;
+    display: inline-block;
+    outline: 0;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent
+  }
 
 .owlng-ripple-iconWrapper {
   display: flex;
