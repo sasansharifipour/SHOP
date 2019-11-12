@@ -38,6 +38,7 @@
     "canvas-gauges": "^2.1.5",
     "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
+    "flag-icon-css": "^3.4.5",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
     "ng-canvas-gauges": "^6.0.4",
