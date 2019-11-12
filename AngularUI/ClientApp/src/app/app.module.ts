@@ -43,6 +43,30 @@ import { ChangeUserPasswordComponent } from './users/user-change-password/user.c
 import { InlineLoginFormComponent } from './users/inline-login-form/inline-login-form.component';
 import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
 
+import { L10nConfig, L10nLoader, LocalizationModule, StorageStrategy, ProviderType } from 'angular-l10n';
+
+
+const l10nConfig: L10nConfig = {
+
+  locale: {
+    languages: [
+      { code: 'en', dir: 'ltr' },
+      { code: 'pr', dir: 'rtl' }
+    ],
+    defaultLocale: { languageCode: 'en', countryCode: 'US' },
+    currency: 'USD',
+    storage: StorageStrategy.Cookie
+  },
+  translation: {
+    providers: [
+      { type: ProviderType.Static, prefix: './assets/l10n/locale-' }
+    ],
+    caching: true,
+    composedKeySeparator: '.',
+    missingValue: 'No key'
+  }
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +127,8 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
       { path: 'users/delete', component: DeleteUserComponent },
       { path: 'users/login', component: LoginFormComponent },
       { path: 'users/inlinelogin', component: InlineLoginFormComponent },
-    ])
+    ]),
+    LocalizationModule.forRoot(l10nConfig)
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -113,4 +138,8 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
     RegistrationFormComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public l10nLoader: L10nLoader) {
+    this.l10nLoader.load();
+  }
+}
