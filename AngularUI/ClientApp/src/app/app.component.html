@@ -1,19 +1,16 @@
 <body style=" height: 100%;" dir="ltr">
 
-<div class="half-circle text-center">
-  <owl-form-field style="width: 90%;">
-    <owl-select placeholder="Language" style="margin-top:20px;">
-      <owl-option [value]="'US'">English <span class="flag-icon flag-icon-us showing-flag-option"> </span></owl-option>
-      <owl-option [value]="'PR'">Persian <span class="flag-icon flag-icon-ir showing-flag-option"> </span></owl-option>
-    </owl-select>
-  </owl-form-field>
+  <div class="half-circle text-center">
+    <mat-form-field style="width: 90%;">
+      <mat-select placeholder="Language" style="margin-top:20px;" (selectionChange)="change_language($event.value)">
+        <mat-option [value]="'en'">English <span class="flag-icon flag-icon-gb showing-flag-option"> </span></mat-option>
+        <mat-option [value]="'pr'">Persian <span class="flag-icon flag-icon-ir showing-flag-option"> </span></mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <span class="flag-icon flag-icon-us showing-flag">
+    <div class="flag-icon showing-flag" [ngClass]="selected_flag_class"></div>
 
-  </span>
-
-
-</div>
+  </div>
 
 <div class="col-12 MenuColored" style="padding: 0px;">
   <div class="col-1 text-center" style="display: inline-block; padding: 0px;"  *ngIf="status">

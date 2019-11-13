@@ -9,6 +9,8 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { UserService } from './shared/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, transition, animate, style } from '@angular/animations';
+import { MatOptionSelectionChange } from '@angular/material';
+import { LocaleService, Language, DefaultLocale, Currency } from 'angular-l10n';
 
 interface FoodNode {
   name: string;
@@ -71,6 +73,12 @@ interface ExampleFlatNode {
 })
 
 export class AppComponent implements OnInit, OnDestroy {
+
+  @Language() lang: string;
+  @DefaultLocale() defaultLocale: string;
+  @Currency() currency: string;
+
+  selected_flag_class: string = 'flag-icon-gb';
 
   private transformer = (node: FoodNode, level: number) => {
     return {
@@ -154,7 +162,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
 
-  constructor(dir: Directionality, private router: Router, private userService: UserService) {
+  constructor(dir: Directionality, private router: Router,
+    private userService: UserService, public locale: LocaleService) {
     this.dataSource.data = TREE_DATA;
     /*
     this.isRtl = dir.value === 'rtl';
@@ -171,4 +180,19 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  change_language(language: string) {
+    if (language == 'en') {
+      this.selectLocale('en', 'GB', 'USD');
+      this.selected_flag_class = 'flag-icon-gb';
+    }
+    else if (language == 'pr') {
+      this.selectLocale('pr', 'IR', 'IRR');
+      this.selected_flag_class = 'flag-icon-ir';
+    }
+  }
+
+  selectLocale(language: string, country: string, currency: string): void {
+    this.locale.setDefaultLocale(language, country);
+    this.locale.setCurrentCurrency(currency);
+  }
 }
