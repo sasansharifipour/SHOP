@@ -151,19 +151,20 @@ export class AppComponent implements OnInit, OnDestroy {
 
         if (!this.status) {
           this.router.navigate(['/users/login']);
-        }/**/
+        }
       }
     );
-
+    this.set_language_class();
   }
-
+  
   logout() {
     this.userService.logout();
   }
 
 
   constructor(dir: Directionality, private router: Router,
-    private userService: UserService, public locale: LocaleService) {
+    private userService: UserService, public locale: LocaleService
+  ) {
     this.dataSource.data = TREE_DATA;
     /*
     this.isRtl = dir.value === 'rtl';
@@ -183,16 +184,27 @@ export class AppComponent implements OnInit, OnDestroy {
   change_language(language: string) {
     if (language == 'en') {
       this.selectLocale('en', 'GB', 'USD');
-      this.selected_flag_class = 'flag-icon-gb';
     }
     else if (language == 'pr') {
       this.selectLocale('pr', 'IR', 'IRR');
-      this.selected_flag_class = 'flag-icon-ir';
     }
   }
 
   selectLocale(language: string, country: string, currency: string): void {
     this.locale.setDefaultLocale(language, country);
     this.locale.setCurrentCurrency(currency);
+
+    this.set_language_class();
+  }
+
+  set_language_class() {
+    let language : string = this.locale.getCurrentLanguage();
+
+    if (this.locale.getCurrentLanguage() == 'en') {
+      this.selected_flag_class = 'flag-icon-gb';
+    }
+    else if (this.locale.getCurrentLanguage() == 'pr') {
+      this.selected_flag_class = 'flag-icon-ir';
+    }
   }
 }
