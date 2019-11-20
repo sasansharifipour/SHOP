@@ -9,6 +9,8 @@ import { EditUserComponent } from '../edit-user/edit.user.component';
 import { DeleteUserComponent } from '../delete-user-confirm/delete.user.component';
 import { ChangeUserPasswordComponent } from '../user-change-password/user.change.password.component';
 
+import { Language, DefaultLocale, Currency } from 'angular-l10n';
+
 @Component({
   selector: 'app-users-get-component',
   styleUrls: ['get.users.component.scss'],
@@ -16,6 +18,11 @@ import { ChangeUserPasswordComponent } from '../user-change-password/user.change
 })
 
 export class GetUsersComponent implements OnInit {
+
+  @Language() lang: string;
+  @DefaultLocale() defaultLocale: string;
+  @Currency() currency: string;
+
   public users: UserViewModel[];
   displayedColumns: string[] = ['name', 'family', 'mobile', 'eMail', 'userName', 'actions'];
   dataSource = new MatTableDataSource<UserViewModel>(this.users);
