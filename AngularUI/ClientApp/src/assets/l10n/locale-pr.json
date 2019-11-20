@@ -1,3 +1,15 @@
 {
-
+  "Common": {
+    "Name": "نام",
+    "Family": "نام خانوادگی",
+    "Mobile_Number": "شماره همراه",
+    "E_Mail": "شماره همراه"
+  }, 
+  "User": {
+    "Username": "نام کاربری",
+    "Username_Required_Text": "وارد کردن نام کاربری اجباری است",
+    "Password": "کلمه عبور",
+    "Password_Required_Text": "وارد کردن کلمه عبور اجباری است",
+    "Login": "ورود"
+  }
 }

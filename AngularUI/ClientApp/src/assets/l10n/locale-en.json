@@ -1,3 +1,15 @@
 {
-
+  "Common": {
+    "Name": "Name",
+    "Family": "Family",
+    "Mobile_Number": "Mobile Number",
+    "E_Mail": "E-Mail"
+  },
+  "User": {
+    "Username": "Username",
+    "Username_Required_Text": "Username is required.",
+    "Password": "Password",
+    "Password_Required_Text": "Password is required.",
+    "Login": "Login"
+  }
 }
