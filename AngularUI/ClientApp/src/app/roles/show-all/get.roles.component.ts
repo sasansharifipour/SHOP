@@ -9,6 +9,7 @@ import { RoleService } from 'src/app/shared/services/role.service';
 import { AddRoleComponent } from '../add/add.role.component';
 import { DeleteRoleComponent } from '../delete-confirm/delete.role.component';
 import { EditRoleComponent } from '../edit/edit.role.component';
+import { language } from 'src/app/shared/services/change.language';
 
 @Component({
   selector: 'app-roles-get-component',
@@ -25,7 +26,8 @@ export class GetRolesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private spinner: NgxSpinnerService, private roleService: RoleService,
-    private dialogService: OwlDialogService) { }
+    private dialogService: OwlDialogService,
+    public languageService: language) { }
     
   ngOnInit() {
     this.loadData();
