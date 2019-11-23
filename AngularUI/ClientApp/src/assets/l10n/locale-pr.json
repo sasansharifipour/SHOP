@@ -1,14 +1,27 @@
 {
   "Common": {
     "Name": "نام",
+    "Name_Required_Text": "وارد کردن نام اجباری است",
     "Family": "نام خانوادگی",
+    "Family_Required_Text": "وارد کردن نام خانوادگی اجباری است",
     "Mobile_Number": "شماره همراه",
-    "E_Mail": "شماره همراه"
-  }, 
+    "Mobile_Number_Required_Text": "وارد کردن شماره همراه اجباری است",
+    "E_Mail": "پست الکترونیکی",
+    "E_Mail_Valid_Text": "لطفاً یک پست الکترونیکی معتبر وارد نمائید",
+    "E_Mail_Required_Text": "وارد کردن پست الکترونیکی اجباری است",
+    "Fill_Form_Title_Text": "لطفاً اطلاعات مورد نیاز را وارد نمائید",
+    "Register": "ثبت",
+    "Delete": "حذف",
+    "Update": "بروزرسانی",
+    "Delete_Confirm": "آیا از حذف این آیتم اطمینان دارید؟",
+    "Cancel": "صرف نظر"
+  },
   "User": {
     "Username": "نام کاربری",
     "Username_Required_Text": "وارد کردن نام کاربری اجباری است",
     "Password": "کلمه عبور",
+    "Old_Password": "کلمه عبور قبلی",
+    "New_Password": "کلمه عبور جدید",
     "Password_Required_Text": "وارد کردن کلمه عبور اجباری است",
     "Login": "ورود"
   }

@@ -61,6 +61,7 @@
     <None Remove="ClientApp\src\app\shared\models\user.viewmodel.inteface.ts" />
     <None Remove="ClientApp\src\app\shared\modules\Http.Interceptor.ts" />
     <None Remove="ClientApp\src\app\shared\services\base.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\change.language.ts" />
     <None Remove="ClientApp\src\app\shared\services\Operator.Service.ts" />
     <None Remove="ClientApp\src\app\shared\services\role.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\Technology.Service.ts" />
@@ -90,6 +91,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\user.viewmodel.inteface.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\modules\http.Interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\base.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\change.language.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\Technology.Service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\Operator.Service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\role.service.ts" />

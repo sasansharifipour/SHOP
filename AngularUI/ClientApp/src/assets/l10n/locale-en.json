@@ -1,14 +1,27 @@
 {
   "Common": {
     "Name": "Name",
+    "Name_Required_Text": "Name is required.",
     "Family": "Family",
+    "Family_Required_Text": "Family is required.",
     "Mobile_Number": "Mobile Number",
-    "E_Mail": "E-Mail"
+    "Mobile_Number_Required_Text": "Mobile Number is required.",
+    "E_Mail": "E-Mail",
+    "E_Mail_Valid_Text": "Please enter a valid email address.",
+    "E_Mail_Required_Text": "E-Mail is required.",
+    "Fill_Form_Title_Text": "Please Enter The Information",
+    "Register": "Register",
+    "Delete": "Delete",
+    "Update": "Update",
+    "Delete_Confirm": "Are you sure for deleting this item?",
+    "Cancel": "Cancel"
   },
   "User": {
     "Username": "Username",
     "Username_Required_Text": "Username is required.",
     "Password": "Password",
+    "Old_Password": "Old Password",
+    "New_Password": "New Password",
     "Password_Required_Text": "Password is required.",
     "Login": "Login"
   }
