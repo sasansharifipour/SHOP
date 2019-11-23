@@ -1,54 +1,54 @@
 
-<div class="col-12"
+<div class="col-12" dir="{{ languageService.direction }}"
      style="padding-top: 20px;">
   
-    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
-      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">Are you sure for deleting this item?</h5>      
-    </div>
+  <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
+    <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">{{ 'Common.Delete_Confirm' | translate:languageService.lang }}</h5>
+  </div>
 
-    <div class="row">
-      <div class="col-12">
-        
-          <div class="form-group">
+  <div class="row">
+    <div class="col-12">
 
-            <h6>Name : {{ user.name }} </h6>
+      <div class="form-group">
 
-            <h6>Family : {{ user.family }} </h6>
+        <h6>{{ 'Common.Name' | translate:languageService.lang }} : {{ user.name }} </h6>
 
-            <h6>E-Mail : {{ user.eMail }} </h6>
+        <h6>{{ 'Common.Family' | translate:languageService.lang }} : {{ user.family }} </h6>
 
-            <h6>Mobile : {{ user.mobile }} </h6>
+        <h6>{{ 'Common.E_Mail' | translate:languageService.lang }} : {{ user.eMail }} </h6>
 
-          </div>
-
-          
-          <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
-
-            <button class="owlng-btn" owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'"  (click)="deleteUser()">
-              Delete
-            </button>
-
-            <button class="owlng-btn" owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" (click)="onCancelClick()">
-              Cancel
-            </button>
-
-            <ngx-spinner bdOpacity=1
-                         bdColor="#333"
-                         size="large"
-                         color="#fff"
-                         type="ball-atom"
-                         fullScreen="true">
-              <p style="color: white"> Loading... </p>
-            </ngx-spinner>
-
-          </div>
-
-          <div *ngIf="errors" class="alert alert-danger text-left" role="alert">
-            <strong>ERROR : </strong> {{errors}}
-          </div>
+        <h6>{{ 'Common.Mobile_Number' | translate:languageService.lang }} : {{ user.mobile }} </h6>
 
       </div>
+
+
+      <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+
+        <button class="owlng-btn" owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" (click)="deleteUser()">
+          {{ 'Common.Delete' | translate:languageService.lang }}
+        </button>
+
+        <button class="owlng-btn" owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" (click)="onCancelClick()">
+          {{ 'Common.Cancel' | translate:languageService.lang }}
+        </button>
+
+        <ngx-spinner bdOpacity=1
+                     bdColor="#333"
+                     size="large"
+                     color="#fff"
+                     type="ball-atom"
+                     fullScreen="true">
+          <p style="color: white"> Loading... </p>
+        </ngx-spinner>
+
+      </div>
+
+      <div *ngIf="errors" class="alert alert-danger text-left" role="alert">
+        <strong>ERROR : </strong> {{errors}}
+      </div>
+
     </div>
+  </div>
 
 </div>
 

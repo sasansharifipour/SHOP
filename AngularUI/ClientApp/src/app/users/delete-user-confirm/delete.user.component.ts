@@ -6,6 +6,8 @@ import { UserService } from '../../shared/services/user.service';
 import { OwlNotifierService, OwlDialogRef } from 'owl-ng';
 import { OWL_DIALOG_DATA } from 'owl-ng';
 import { UserViewModel } from 'src/app/shared/models/user.viewmodel.inteface';
+import { language } from 'src/app/shared/services/change.language';
+
 
 @Component({
   selector: 'app-delete-user',
@@ -31,7 +33,8 @@ export class DeleteUserComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService,
     private userService: UserService,
-    private notifier: OwlNotifierService) {
+    private notifier: OwlNotifierService,
+    public languageService: language) {
 
     this.email = data.email;
 
