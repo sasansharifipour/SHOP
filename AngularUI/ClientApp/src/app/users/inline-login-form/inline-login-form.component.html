@@ -8,10 +8,10 @@
               <owl-form-field >
                 <input owlInput id="username" type="text" name="username" autoFocus
                        autocomplete="off" ngModel required #username="ngModel"
-                       placeholder="Username">
+                       placeholder="{{ 'User.Username' | translate:lang }}">
 
                 <owl-error *ngIf="username.errors?.required && username.touched" style="font-size: larger;">
-                  Username is <strong>required</strong>
+                  {{ 'User.Username_Required_Text' | translate:lang }}
                 </owl-error>
               </owl-form-field>
             </div>
@@ -19,7 +19,7 @@
             <div class="form-group">
               <owl-form-field>
                 <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
-                       id="password" autocomplete="off" name="password" placeholder="Password"
+                       id="password" autocomplete="off" name="password" placeholder="{{ 'User.Password' | translate:lang }}"
                        required ngModel>
 
                 <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
@@ -28,7 +28,7 @@
                 </span>
 
                 <owl-error *ngIf="password.errors?.required && password.touched" style="font-size: larger;">
-                  Password is <strong>required</strong>
+                  {{ 'User.Password_Required_Text' | translate:lang }}
                 </owl-error>
 
               </owl-form-field>
@@ -38,7 +38,7 @@
 
               <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
                       owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" style="z-index:5;">
-                Login
+                {{ 'User.Login' | translate:lang }}
               </button>
 
               <ngx-spinner bdOpacity=1

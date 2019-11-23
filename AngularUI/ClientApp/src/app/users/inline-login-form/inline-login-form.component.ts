@@ -9,13 +9,19 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { error } from 'protractor';
 import { OwlDialogRef, OWL_DIALOG_DATA } from 'owl-ng';
 
+import { Language, DefaultLocale, Currency } from 'angular-l10n';
+
 @Component({
   selector: 'app-inline-login-form',
   templateUrl: './inline-login-form.component.html'
 })
 
 export class InlineLoginFormComponent implements OnInit {
-  
+
+  @Language() lang: string;
+  @DefaultLocale() defaultLocale: string;
+  @Currency() currency: string;
+
   errors: string;
   isRequesting: boolean;
   submitted: boolean = false;
