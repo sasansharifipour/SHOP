@@ -8,8 +8,7 @@ import { OwlDialogService, OwlDialogRef } from 'owl-ng';
 import { EditUserComponent } from '../edit-user/edit.user.component';
 import { DeleteUserComponent } from '../delete-user-confirm/delete.user.component';
 import { ChangeUserPasswordComponent } from '../user-change-password/user.change.password.component';
-
-import { Language, DefaultLocale, Currency } from 'angular-l10n';
+import { language } from 'src/app/shared/services/change.language';
 
 @Component({
   selector: 'app-users-get-component',
@@ -19,9 +18,6 @@ import { Language, DefaultLocale, Currency } from 'angular-l10n';
 
 export class GetUsersComponent implements OnInit {
 
-  @Language() lang: string;
-  @DefaultLocale() defaultLocale: string;
-  @Currency() currency: string;
 
   public users: UserViewModel[];
   displayedColumns: string[] = ['name', 'family', 'mobile', 'eMail', 'userName', 'actions'];
@@ -31,10 +27,12 @@ export class GetUsersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private spinner: NgxSpinnerService, private userService: UserService,
-    private dialogService: OwlDialogService) { }
+    private dialogService: OwlDialogService,
+    public languageService: language) { }
     
   ngOnInit() {
     this.loadData();
+    this.languageService.set_language_class();
   }
 
   loadData() {
