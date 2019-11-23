@@ -8,12 +8,18 @@ import { LoginModel } from '../../shared/models/user.login.interface';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { error } from 'protractor';
 
+import { Language, DefaultLocale, Currency } from 'angular-l10n';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html'
 })
 
 export class LoginFormComponent implements OnInit {
+
+  @Language() lang: string;
+  @DefaultLocale() defaultLocale: string;
+  @Currency() currency: string;
   
   errors: string;
   isRequesting: boolean;

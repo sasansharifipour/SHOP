@@ -1,71 +1,61 @@
-<div class="col-12 MenuColored" style="padding: 0px; height: 100%;">
-  <div style="padding-top: 200px;" class=" col-xl-4 offset-xl-4 col-lg-5 offset-lg-4 col-md-7 offset-md-3 col-sm-10 offset-sm-1" dir="ltr">
-    <div class="container">
-      <!--<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
-        <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">لطفاً اطلاعات خود را وارد نمائید</h5>
-      </div>-->
+<div class="col-12 MenuColored text-center align-items-center align-content-center" style="padding: 0px; height: 100%;">
+  <div class="offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-2 col-md-8 col-sm-12" style="padding-top:  200px;" >
 
-      <div class="row ">
-        <div class="col-12">
-          <br />
-          <form #f="ngForm" novalidate (ngSubmit)="login(f)" autocomplete="off">
+    <form #f="ngForm" novalidate (ngSubmit)="login(f)" autocomplete="off">
 
-            <div class="form-group">
-              <owl-form-field class="owlng-input-customised">
-                <input owlInput id="username" type="text" name="username" autoFocus
-                       autocomplete="off" ngModel required #username="ngModel"
-                       placeholder="Username" class="input-color-customised">
+      <div class="form-group">
+        <owl-form-field class="owlng-input-customised"  [ngClass]="'text-right'">
+          <input owlInput id="username" type="text" name="username" autoFocus 
+                 autocomplete="off" ngModel required #username="ngModel"
+                 placeholder="{{ 'User.Username' | translate:lang }}" class="input-color-customised">
 
-                <owl-error *ngIf="username.errors?.required && username.touched" style="font-size: larger;">
-                  Username is <strong>required</strong>
-                </owl-error>
-              </owl-form-field>
-            </div>
-
-            <div class="form-group">
-              <owl-form-field class="owlng-input-customised">
-                <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
-                       id="password" autocomplete="off" name="password" placeholder="Password"
-                       required ngModel class="input-color-customised">
-
-                <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
-                  <mat-icon *ngIf="showPassword">visibility_off</mat-icon>
-                  <mat-icon *ngIf="!showPassword">visibility</mat-icon>
-                </span>
-
-                <owl-error *ngIf="password.errors?.required && password.touched" style="font-size: larger;">
-                  Password is <strong>required</strong>
-                </owl-error>
-
-              </owl-form-field>
-            </div>
-
-            <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
-
-              <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
-                      owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" style="z-index:5;">
-                Login
-              </button>
-
-              <ngx-spinner bdOpacity=1
-                           bdColor="#333"
-                           size="large"
-                           color="#fff"
-                           type="ball-atom"
-                           fullScreen="true">
-                <p style="color: white"> Loading... </p>
-              </ngx-spinner>
-
-            </div>
-
-            <div *ngIf="errors" class="alert alert-danger" role="alert">
-              <strong>خطا : </strong> {{errors}}
-            </div>
-
-          </form>
-        </div>
+          <owl-error *ngIf="username.errors?.required && username.touched" style="font-size: larger;">
+            {{ 'User.Username_Required_Text' | translate:lang }}
+          </owl-error>
+        </owl-form-field>
       </div>
-    </div>
+
+      <div class="form-group">
+        <owl-form-field class="owlng-input-customised">
+          <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
+                 id="password" autocomplete="off" name="password" placeholder="{{ 'User.Password' | translate:lang }}"
+                 required ngModel class="input-color-customised">
+
+          <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
+            <mat-icon *ngIf="showPassword">visibility_off</mat-icon>
+            <mat-icon *ngIf="!showPassword">visibility</mat-icon>
+          </span>
+
+          <owl-error *ngIf="password.errors?.required && password.touched" style="font-size: larger;">
+            {{ 'User.Password_Required_Text' | translate:lang }}
+          </owl-error>
+
+        </owl-form-field>
+      </div>
+
+      <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+
+        <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
+                owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" style="z-index:5;">
+          {{ 'User.Login' | translate:lang }}
+        </button>
+
+        <ngx-spinner bdOpacity=1
+                     bdColor="#333"
+                     size="large"
+                     color="#fff"
+                     type="ball-atom"
+                     fullScreen="true">
+          <p style="color: white"> Loading... </p>
+        </ngx-spinner>
+
+      </div>
+
+      <div *ngIf="errors" class="alert alert-danger" role="alert">
+        <strong>ERROR : </strong> {{errors}}
+      </div>
+
+    </form>
   </div>
 </div>
 
