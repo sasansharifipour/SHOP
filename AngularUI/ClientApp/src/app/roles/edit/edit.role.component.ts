@@ -7,6 +7,7 @@ import { OwlNotifierService, OwlDialogRef } from 'owl-ng';
 import { OWL_DIALOG_DATA } from 'owl-ng';
 import { RoleViewModel } from 'src/app/shared/models/role.viewmodel.inteface';
 import { RoleService } from 'src/app/shared/services/role.service';
+import { language } from 'src/app/shared/services/change.language';
 
 @Component({
   selector: 'app-edit-role',
@@ -28,7 +29,8 @@ export class EditRoleComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService,
     private roleService: RoleService,
-    private notifier: OwlNotifierService) {
+    private notifier: OwlNotifierService,
+    public languageService: language) {
 
     this.entity_id = data.entity_id;
 
