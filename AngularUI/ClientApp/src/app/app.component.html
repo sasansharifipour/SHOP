@@ -1,5 +1,4 @@
-<body style=" height: 100%;" dir="ltr">
-
+<body style=" height: 100%;" dir="{{ languageService.direction }}">
   <div class="half-circle text-center">
     <mat-form-field style="width: 90%;">
       <mat-select placeholder="Language" style="margin-top:20px;" (selectionChange)="change_language($event.value)">
@@ -8,7 +7,7 @@
       </mat-select>
     </mat-form-field>
 
-    <div class="flag-icon showing-flag" [ngClass]="selected_flag_class"></div>
+    <div class="flag-icon showing-flag" [ngClass]="languageService.selected_flag_class"></div>
 
   </div>
 

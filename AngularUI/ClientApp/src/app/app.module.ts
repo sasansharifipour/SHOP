@@ -45,7 +45,6 @@ import { ShowDataComponent } from './Dashboard/Show-Data/Show-Data';
 
 import { L10nConfig, L10nLoader, LocalizationModule, StorageStrategy, ProviderType } from 'angular-l10n';
 
-
 const l10nConfig: L10nConfig = {
 
   locale: {

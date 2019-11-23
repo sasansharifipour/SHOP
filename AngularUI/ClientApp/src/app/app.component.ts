@@ -10,7 +10,8 @@ import { UserService } from './shared/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { MatOptionSelectionChange } from '@angular/material';
-import { LocaleService, Language, DefaultLocale, Currency } from 'angular-l10n';
+
+import { language } from './shared/services/change.language';
 
 interface FoodNode {
   name: string;
@@ -73,12 +74,6 @@ interface ExampleFlatNode {
 })
 
 export class AppComponent implements OnInit, OnDestroy {
-
-  @Language() lang: string;
-  @DefaultLocale() defaultLocale: string;
-  @Currency() currency: string;
-
-  selected_flag_class: string = 'flag-icon-gb';
 
   private transformer = (node: FoodNode, level: number) => {
     return {
@@ -154,7 +149,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     );
-    this.set_language_class();
+    this.languageService.set_language_class();
   }
   
   logout() {
@@ -163,7 +158,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   constructor(dir: Directionality, private router: Router,
-    private userService: UserService, public locale: LocaleService
+    private userService: UserService, public languageService: language
   ) {
     this.dataSource.data = TREE_DATA;
     /*
@@ -175,36 +170,13 @@ export class AppComponent implements OnInit, OnDestroy {
     */
   }
 
-
   ngOnDestroy() {
     this._dirChangeSubscription.unsubscribe();
     this.subscription.unsubscribe();
   }
 
   change_language(language: string) {
-    if (language == 'en') {
-      this.selectLocale('en', 'GB', 'USD');
-    }
-    else if (language == 'pr') {
-      this.selectLocale('pr', 'IR', 'IRR');
-    }
+    this.languageService.change_language(language);
   }
 
-  selectLocale(language: string, country: string, currency: string): void {
-    this.locale.setDefaultLocale(language, country);
-    this.locale.setCurrentCurrency(currency);
-
-    this.set_language_class();
-  }
-
-  set_language_class() {
-    let language : string = this.locale.getCurrentLanguage();
-
-    if (this.locale.getCurrentLanguage() == 'en') {
-      this.selected_flag_class = 'flag-icon-gb';
-    }
-    else if (this.locale.getCurrentLanguage() == 'pr') {
-      this.selected_flag_class = 'flag-icon-ir';
-    }
-  }
 }
