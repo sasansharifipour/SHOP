@@ -3,7 +3,7 @@
      style="padding-top: 20px;">
   
     <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
-      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">Please Enter The Information</h5>      
+      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">{{ 'Common.Fill_Form_Title_Text' | translate:languageService.lang }}</h5>      
     </div>
 
     <div class="row text-right">
@@ -12,11 +12,11 @@
 
           <div class="form-group">
             <owl-form-field>
-              <input owlInput type="text" id="name" placeholder="Name" name="name"
+              <input owlInput type="text" id="name" placeholder="{{ 'Common.Name' | translate:languageService.lang }}" name="name"
                      required autoFocus [(ngModel)] ="user.name" #name="ngModel" autocomplete="off">
 
               <owl-error *ngIf="name.errors?.required && name.touched">
-                Name is <strong>required</strong>
+                {{ 'Common.Name_Required_Text' | translate:languageService.lang }}
               </owl-error>
 
             </owl-form-field>
@@ -24,11 +24,11 @@
 
           <div class="form-group">
             <owl-form-field>
-              <input owlInput type="text" id="family" placeholder="Family" name="family"
+              <input owlInput type="text" id="family" placeholder="{{ 'Common.Family' | translate:languageService.lang }}" name="family"
                      required [(ngModel)] ="user.family" #family="ngModel" autocomplete="off">
 
               <owl-error *ngIf="family.errors?.required && family.touched">
-                Family is <strong>required</strong>
+                {{ 'Common.Family_Required_Text' | translate:languageService.lang }}
               </owl-error>
 
             </owl-form-field>
@@ -36,15 +36,15 @@
 
           <div class="form-group">
             <owl-form-field >
-              <input owlInput type="text" id="eMail" placeholder="E-Mail" name="eMail" [disabled] ="true"
+              <input owlInput type="text" id="eMail" placeholder="{{ 'Common.E_Mail' | translate:languageService.lang }}" name="eMail" [disabled] ="true"
                      required email [(ngModel)] ="user.eMail" #eMail="ngModel" autocomplete="off" >
 
               <owl-error *ngIf="eMail.errors?.email && eMail.touched">
-                Please enter a valid email address
+                {{ 'Common.E_Mail_Valid_Text' | translate:languageService.lang }}
               </owl-error>
 
               <owl-error *ngIf="eMail.errors?.required && eMail.touched">
-                Email is <strong>required</strong>
+                {{ 'Common.E_Mail_Required_Text' | translate:languageService.lang }}
               </owl-error>
             </owl-form-field>
           </div>
@@ -53,7 +53,7 @@
           <div class="form-group">
             <owl-form-field>
               <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
-                     id="password" autocomplete="off" name="password" placeholder="Password"
+                     id="password" autocomplete="off" name="password" placeholder="{{ 'User.Password' | translate:languageService.lang }}"
                      ngModel>
 
               <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
@@ -66,11 +66,11 @@
           
           <div class="form-group">
             <owl-form-field>
-              <input owlInput type="text" id="mobile" placeholder="Mobile Number" name="mobile"
+              <input owlInput type="text" id="mobile" placeholder="{{ 'Common.Mobile_Number' | translate:languageService.lang }}" name="mobile"
                      required [(ngModel)] ="user.mobile" #mobile="ngModel" autocomplete="off" [owlInputMask]="'(999) 999-9999'">
               <owl-hint>(912) 345-6789 </owl-hint>
               <owl-error *ngIf="mobile.errors?.required && mobile.touched">
-                Mobile Number is <strong>required</strong>
+                {{ 'Common.Mobile_Number_Required_Text' | translate:languageService.lang }}
               </owl-error>
 
             </owl-form-field>
@@ -79,7 +79,9 @@
           <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
 
             <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
-                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">Update</button>
+                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">
+              {{ 'Common.Update' | translate:languageService.lang }}
+            </button>
             <ngx-spinner bdOpacity=1
                          bdColor="#333"
                          size="large"
