@@ -5,6 +5,7 @@ import { OwlNotifierService, OwlDialogRef } from 'owl-ng';
 import { OWL_DIALOG_DATA } from 'owl-ng';
 import { RoleService } from 'src/app/shared/services/role.service';
 import { RoleViewModel } from 'src/app/shared/models/role.viewmodel.inteface';
+import { language } from 'src/app/shared/services/change.language';
 
 @Component({
   selector: 'app-delete-role',
@@ -27,7 +28,8 @@ export class DeleteRoleComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService,
     private roleService: RoleService,
-    private notifier: OwlNotifierService) {
+    private notifier: OwlNotifierService,
+    public languageService: language) {
 
     this.entity_id = data.entity_id;
 
