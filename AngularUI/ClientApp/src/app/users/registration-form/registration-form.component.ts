@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { UserRegistration } from '../../shared/models/user.registration.interface';
 import { UserService } from '../../shared/services/user.service';
 import { OwlNotifierService, OwlDialogRef } from 'owl-ng';
+import { language } from 'src/app/shared/services/change.language';
 
 @Component({
   selector: 'app-registration-form',
@@ -25,7 +26,8 @@ export class RegistrationFormComponent implements OnInit {
 
   constructor(public dialogRef: OwlDialogRef<RegistrationFormComponent>,
     private router: Router, private spinner: NgxSpinnerService,
-    private userService: UserService, private notifier: OwlNotifierService) { }
+    private userService: UserService, private notifier: OwlNotifierService,
+    public languageService: language) { }
 
   ngOnInit() { }
 
