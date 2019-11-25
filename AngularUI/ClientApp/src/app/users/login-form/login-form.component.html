@@ -1,10 +1,6 @@
 <div class="col-12 MenuColored" style="padding: 0px; height: 100%;">
-  <div style="padding-top: 200px;" class=" col-xl-4 offset-xl-4 col-lg-5 offset-lg-4 col-md-7 offset-md-3 col-sm-10 offset-sm-1" dir="ltr">
+  <div style="padding-top: 50px;" class="col-xl-4 offset-xl-4 col-lg-5 offset-lg-4 col-md-7 offset-md-3 col-sm-10 offset-sm-1" dir="ltr">
     <div class="container">
-      <!--<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
-        <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">لطفاً اطلاعات خود را وارد نمائید</h5>
-      </div>-->
-
       <div class="row ">
         <div class="col-12">
           <br />
@@ -14,10 +10,10 @@
               <owl-form-field class="owlng-input-customised">
                 <input owlInput id="username" type="text" name="username" autoFocus
                        autocomplete="off" ngModel required #username="ngModel"
-                       placeholder="Username" class="input-color-customised">
-
+                       placeholder="شماره همراه" class="input-color-customised" [owlInputMask]="'999-999-9999'">
+                <owl-hint>912-345-6789 </owl-hint>
                 <owl-error *ngIf="username.errors?.required && username.touched" style="font-size: larger;">
-                  Username is <strong>required</strong>
+                  وارد کردن <strong>شماره همراه</strong> اجباری است
                 </owl-error>
               </owl-form-field>
             </div>
@@ -25,7 +21,7 @@
             <div class="form-group">
               <owl-form-field class="owlng-input-customised">
                 <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
-                       id="password" autocomplete="off" name="password" placeholder="Password"
+                       id="password" autocomplete="off" name="password" placeholder="کلمه عبور"
                        required ngModel class="input-color-customised">
 
                 <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
@@ -34,7 +30,7 @@
                 </span>
 
                 <owl-error *ngIf="password.errors?.required && password.touched" style="font-size: larger;">
-                  Password is <strong>required</strong>
+                  وارد کردن <strong>کلمه عبور</strong> اجباری است
                 </owl-error>
 
               </owl-form-field>
@@ -44,19 +40,26 @@
 
               <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
                       owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'" style="z-index:5;">
-                Login
+                ورود
               </button>
-
-              <ngx-spinner bdOpacity=1
-                           bdColor="#333"
-                           size="large"
-                           color="#fff"
-                           type="ball-atom"
-                           fullScreen="true">
-                <p style="color: white"> Loading... </p>
-              </ngx-spinner>
-
             </div>
+            <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-right">
+              <span (click)="openDialog_addUser($event)" style="cursor: pointer;">
+                ثبت نام در سامانه <mat-icon>add_circle</mat-icon>
+              </span>
+              <br />
+              <span (click)="openDialog_addUser($event)" style="cursor: pointer;">
+                فراموشی رمز عبور <mat-icon>vpn_key</mat-icon>
+              </span>
+            </div>
+            <ngx-spinner bdOpacity=1
+                         bdColor="#333"
+                         size="large"
+                         color="#fff"
+                         type="ball-atom"
+                         fullScreen="true">
+              <p style="color: white"> Loading... </p>
+            </ngx-spinner>
 
             <div *ngIf="errors" class="alert alert-danger" role="alert">
               <strong>خطا : </strong> {{errors}}

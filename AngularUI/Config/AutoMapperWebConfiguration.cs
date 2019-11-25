@@ -25,7 +25,7 @@ namespace AngularUI.Config
                 cfg.CreateMap<Technology, TechnologyViewModel>();
 
                 cfg.CreateMap<RegistrationViewModel, User>() .ForMember(
-                    destination => destination.UserName, opts =>  opts.MapFrom(source => source.eMail)) .ForMember(
+                    destination => destination.UserName, opts =>  opts.MapFrom(source => source.mobile)) .ForMember(
                     destination => destination.Id, opts => opts.Ignore()).ForMember(
                     destination => destination.NormalizedUserName, opts => opts.Ignore()).ForMember(
                     destination => destination.NormalizedEmail, opts => opts.Ignore()).ForMember(

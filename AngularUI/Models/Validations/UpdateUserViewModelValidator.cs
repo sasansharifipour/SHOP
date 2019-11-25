@@ -6,8 +6,7 @@ namespace AngularUI.Models.Validations
     {
         public UpdateUserViewModelValidator()
         {
-            RuleFor(s => s.eMail).EmailAddress().WithMessage("Email is not correct");
-            RuleFor(s => s.eMail).NotEmpty().WithMessage("Email cannot be empty");
+            RuleFor(s => s.mobile).NotEmpty().WithMessage("Mobile cannot be empty");
             RuleFor(s => s.name).NotEmpty().WithMessage("FirstName cannot be empty");
             RuleFor(s => s.family).NotEmpty().WithMessage("LastName cannot be empty");
         }

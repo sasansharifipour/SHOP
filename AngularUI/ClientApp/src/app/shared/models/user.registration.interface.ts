@@ -3,6 +3,5 @@ export interface UserRegistration {
   name: string;
   family: string;
   mobile: string;
-  eMail: string;
   userName: string;
 }

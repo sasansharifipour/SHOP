@@ -1,9 +1,9 @@
 
-<div class="col-12"
-     style="padding-top: 20px;">
+<div class="col-12 VazirMedium NoPadding"
+     style="padding: 0px; padding-top: 20px;">
   
-    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
-      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12">Please Enter The Information</h5>      
+    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12" style="padding: 0px; ">
+      <h5 class="text-center col-xl-12 col-lg-12 col-md-12 col-sm-12" style="padding: 0px; ">لطفاً فرم زیر را پر نمائید</h5>      
     </div>
 
     <div class="row text-right">
@@ -12,48 +12,44 @@
 
           <div class="form-group">
             <owl-form-field>
-              <input owlInput type="text" id="name" placeholder="Name" name="name"
-                     required autoFocus ngModel #name="ngModel" autocomplete="off">
-
-              <owl-error *ngIf="name.errors?.required && name.touched">
-                Name is <strong>required</strong>
+              <input owlInput type="text" id="mobile" placeholder="شماره همراه" name="mobile" autoFocus
+                     required ngModel #mobile="ngModel" autocomplete="off" [owlInputMask]="'999-999-9999'">
+              <owl-hint>912-345-6789 </owl-hint>
+              <owl-error *ngIf="mobile.errors?.required && mobile.touched">
+                وارد کردن <strong>شماره همراه </strong> اجباری است
               </owl-error>
 
             </owl-form-field>
           </div>
 
-          <div class="form-group">
-            <owl-form-field>
-              <input owlInput type="text" id="family" placeholder="Family" name="family"
+          <div class="form-group" dir="rtl">
+            <owl-form-field class=" text-right">
+              <input owlInput type="text" id="name" placeholder="نام" name="name"
+                     required  ngModel #name="ngModel" autocomplete="off">
+
+              <owl-error *ngIf="name.errors?.required && name.touched">
+                وارد کردن <strong>نام</strong> اجباری است
+              </owl-error>
+
+            </owl-form-field>
+          </div>
+
+          <div class="form-group" dir="rtl">
+            <owl-form-field class=" text-right">
+              <input owlInput type="text" id="family" placeholder="نام خانوادگی" name="family"
                      required ngModel #family="ngModel" autocomplete="off">
 
               <owl-error *ngIf="family.errors?.required && family.touched">
-                Family is <strong>required</strong>
+                وارد کردن <strong> نام خانوادگی</strong> اجباری است
               </owl-error>
 
             </owl-form-field>
           </div>
-
-          <div class="form-group">
-            <owl-form-field>
-              <input owlInput type="text" id="eMail" placeholder="E-Mail" name="eMail"
-                     required email ngModel #eMail="ngModel" autocomplete="off">
-
-              <owl-error *ngIf="eMail.errors?.email && eMail.touched">
-                Please enter a valid email address
-              </owl-error>
-
-              <owl-error *ngIf="eMail.errors?.required && eMail.touched">
-                Email is <strong>required</strong>
-              </owl-error>
-            </owl-form-field>
-          </div>
-
 
           <div class="form-group">
             <owl-form-field>
               <input owlInput type="{{ showPassword ? 'text' : 'password' }}" #password="ngModel"
-                     id="password" autocomplete="off" name="password" placeholder="Password"
+                     id="password" autocomplete="off" name="password" placeholder="کلمه عبور"
                      required ngModel>
 
               <span owlSuffix (click)="togglePassword()" style="cursor: pointer;">
@@ -62,28 +58,19 @@
               </span>
 
               <owl-error *ngIf="password.errors?.required && password.touched">
-                Password is <strong>required</strong>
+                وارد کردن <strong> کلمه عبور</strong> اجباری است
               </owl-error>
 
             </owl-form-field>
           </div>
-          
-          <div class="form-group">
-            <owl-form-field>
-              <input owlInput type="text" id="mobile" placeholder="Mobile Number" name="mobile"
-                     required ngModel #mobile="ngModel" autocomplete="off" [owlInputMask]="'(999) 999-9999'">
-              <owl-hint>(912) 345-6789 </owl-hint>
-              <owl-error *ngIf="mobile.errors?.required && mobile.touched">
-                Mobile Number is <strong>required</strong>
-              </owl-error>
 
-            </owl-form-field>
-          </div>
-          
+
           <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
 
             <button type="submit" class="owlng-btn" [disabled]="f.invalid || isRequesting"
-                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">Register</button>
+                    owlRipple [owlRippleColor]="'rgba(81, 45, 168, 0.4)'">
+              ثبت اطلاعات
+            </button>
             <ngx-spinner bdOpacity=1
                          bdColor="#333"
                          size="large"
@@ -96,7 +83,7 @@
           </div>
 
           <div *ngIf="errors" class="alert alert-danger text-left" role="alert">
-            <strong>ERROR : </strong> {{errors}}
+            <strong>خطا : </strong> {{errors}}
           </div>
 
         </form>

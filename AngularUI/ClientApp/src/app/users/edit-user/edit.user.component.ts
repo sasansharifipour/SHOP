@@ -52,7 +52,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit() { }
 
   registerUser({ value, valid }: { value: UserRegistration, valid: boolean }) {
-    value.eMail = this.email;
+    
     value.userName = this.email;
 
     this.spinner.show();
