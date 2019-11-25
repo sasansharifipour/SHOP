@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{C166870B-10E5-446B-93A5-02FF716761DB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularUI", "AngularUI\AngularUI.csproj", "{BD5FA238-7B9E-403C-9029-884501312302}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{7706BC9B-B9B3-4BE0-8F0F-32DA3E255B5C}"
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C166870B-10E5-446B-93A5-02FF716761DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C166870B-10E5-446B-93A5-02FF716761DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C166870B-10E5-446B-93A5-02FF716761DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C166870B-10E5-446B-93A5-02FF716761DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BD5FA238-7B9E-403C-9029-884501312302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD5FA238-7B9E-403C-9029-884501312302}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD5FA238-7B9E-403C-9029-884501312302}.Release|Any CPU.ActiveCfg = Release|Any CPU
