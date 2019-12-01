@@ -11,9 +11,9 @@ namespace DataLayer.Context
         {
         }
 
-        public DbSet<Operator> Operators { get; set; }
+        //public DbSet<Operator> Operators { get; set; }
 
-        public DbSet<Technology> Technologies { get; set; }
+        //public DbSet<Technology> Technologies { get; set; }
 
         //DbSet<Province> Provinces { get; set; }
 
