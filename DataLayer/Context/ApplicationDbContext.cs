@@ -1,4 +1,5 @@
-﻿using DomainClasses;
+﻿using System.Security.Cryptography.X509Certificates;
+using DomainClasses;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,8 @@ namespace DataLayer.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Stuff> Stuffs { get; set; }
 
         //public DbSet<Operator> Operators { get; set; }
 
@@ -30,6 +33,8 @@ namespace DataLayer.Context
 
             builder.Entity<Province>().Property(s => s.Id).ValueGeneratedOnAdd();
             builder.Entity<Province>().HasAlternateKey(s => s.Name);
+
+            builder.Entity<Stuff>().Property(s => s.Id).ValueGeneratedOnAdd();
 
             builder.Entity<City>().Property(s => s.Id).ValueGeneratedOnAdd();
             builder.Entity<City>().HasAlternateKey(s => new { s.Name, s.ProvinceId });
