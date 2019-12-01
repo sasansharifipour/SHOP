@@ -19,11 +19,7 @@ namespace AngularUI.Config
                 cfg.CreateMap<RoleUpdateModel, Role>().ForMember(
                     destination => destination.ConcurrencyStamp, opts => opts.Ignore()).ForMember(
                     destination => destination.NormalizedName, opts => opts.Ignore());
-
-                cfg.CreateMap<Operator, OperatorViewModel>();
-
-                cfg.CreateMap<Technology, TechnologyViewModel>();
-
+                
                 cfg.CreateMap<RegistrationViewModel, User>() .ForMember(
                     destination => destination.UserName, opts =>  opts.MapFrom(source => source.mobile)) .ForMember(
                     destination => destination.Id, opts => opts.Ignore()).ForMember(

@@ -48,20 +48,8 @@ namespace AngularUI.Config
             For<IRolesService>().LifecycleIs(Lifecycles.Container)
                 .Use<RolesService>();
 
-            For<IOperatorService>().LifecycleIs(Lifecycles.Container)
-                .Use<OperatorService>();
-
-            For<ITechnologyService>().LifecycleIs(Lifecycles.Container)
-                .Use<TechnologyService>();
-
-            For<IDataProviderService>().LifecycleIs(Lifecycles.Container)
-                .Use<DataProviderService>();
-
             For<ITokenValidatorService>().LifecycleIs(Lifecycles.Container)
                 .Use<TokenValidatorService>();
-
-            For<IDataGatheringService>().LifecycleIs(Lifecycles.Container)
-                .Use<DataGatheringService>();
             
             /*For<Controller>().LifecycleIs(Lifecycles.Unique)
                 .Use<ApiUsersController>().Named("User");
