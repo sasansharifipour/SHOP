@@ -8,6 +8,7 @@
       <a class="navbar-brand" [routerLink]='["/"]'>
         <img src="../../assets/Images/logoonheader.png" style="height : 54px;" />
       </a>
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
               [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
@@ -42,23 +43,23 @@
 
           </li>
           <!--<li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-            <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/counter"]'>Counter</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/fetch-data"]'>Fetch data</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/users/get"]'>users</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/users/create"]'>Sign Up</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="!status">
-            <a class="nav-link text-dark" [routerLink]='["/users/login"]'>Login</a>
-          </li>-->
+        <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link text-dark" [routerLink]='["/counter"]'>Counter</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link text-dark" [routerLink]='["/fetch-data"]'>Fetch data</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link text-dark" [routerLink]='["/users/get"]'>users</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link text-dark" [routerLink]='["/users/create"]'>Sign Up</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="!status">
+        <a class="nav-link text-dark" [routerLink]='["/users/login"]'>Login</a>
+      </li>-->
 
 
         </ul>

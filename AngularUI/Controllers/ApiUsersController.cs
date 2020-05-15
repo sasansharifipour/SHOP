@@ -117,6 +117,7 @@ namespace AngularUI.Controllers
         }
 
         // POST api/<controller>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
         {

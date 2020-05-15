@@ -1,13 +1,17 @@
 <body style=" height: 100%;" dir="ltr">
 
-<div class="col-12 MenuColored" style="padding: 0px;">
-  <div class="col-1 text-center" style="display: inline-block; padding: 0px;"  *ngIf="status">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  <div class="col-12 MenuColored" style="padding: 0px;">
+
+    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 text-center" style="display: inline-block; padding: 0px;" *ngIf="status">
+      <button class="navbar-toggler" mat-icon-button (click)="snav.toggle()"
+              style="border-width: 1px!important; border: solid;border-radius: 5px;width: 50px;">
+      <mat-icon class="icon-display">menu</mat-icon></button>
+    </div>
+
+    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9" style="display: inline-block;  padding: 0px;">
+      <app-nav-menu></app-nav-menu>
+    </div>
   </div>
-  <div class="col-11" style="display: inline-block;  padding: 0px;">
-    <app-nav-menu></app-nav-menu>
-  </div>
-</div>
 <div class="col-12" style="padding: 0px; height: 100%;">
   <owl-fan-menu [spinable]="true" [movable]="true" [wingAngles] ="17"
                 [btnText] ="'Menu'" [menuPosition]="'bottomLeft'"  *ngIf="status">

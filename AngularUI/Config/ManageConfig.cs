@@ -59,7 +59,7 @@ namespace AngularUI.Config
         {
             services.AddDefaultIdentity<User>()
                 .AddRoles<Role>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
         }
 
