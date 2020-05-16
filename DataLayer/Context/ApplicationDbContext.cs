@@ -15,9 +15,9 @@ namespace DataLayer.Context
 
         public DbSet<Technology> Technologies { get; set; }
 
-        //DbSet<Province> Provinces { get; set; }
+        DbSet<Province> Provinces { get; set; }
 
-        //DbSet<City> Cities { get; set; }
+        DbSet<City> Cities { get; set; }
 
         //public virtual DbSet<tblKPIUMT> tblKPIUMTS { get; set; }
 
@@ -26,14 +26,13 @@ namespace DataLayer.Context
             builder.Entity<User>().Property(u => u.Id)
                 .ValueGeneratedOnAdd();
 
-            base.OnModelCreating(builder);
-
             builder.Entity<Province>().Property(s => s.Id).ValueGeneratedOnAdd();
             builder.Entity<Province>().HasAlternateKey(s => s.Name);
 
             builder.Entity<City>().Property(s => s.Id).ValueGeneratedOnAdd();
             builder.Entity<City>().HasAlternateKey(s => new { s.Name, s.ProvinceId });
 
+            base.OnModelCreating(builder);
         }
     }
 }

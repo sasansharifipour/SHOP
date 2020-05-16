@@ -82,7 +82,7 @@ namespace AngularUI
                     };
                 });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMvc(options => options.EnableEndpointRouting = false)
                 .AddFluentValidation(s => 
                 s.RegisterValidatorsFromAssemblyContaining<Startup>());
 
