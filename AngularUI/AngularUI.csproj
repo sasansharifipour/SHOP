@@ -77,6 +77,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ClientApp\src\assets\icons\icon192x192.png" />
+    <Content Include="ClientApp\src\assets\icons\icon512x512.png" />
+    <Content Include="ClientApp\src\manifest.webmanifest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
